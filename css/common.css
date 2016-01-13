@@ -193,3 +193,85 @@ hr {
   position: relative;
   top: -5px;
 }
+
+/* icon */
+
+.sprite {
+  background-image: url(../image/spritesheet.png);
+  background-repeat: no-repeat;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sprite-atom {
+  width: 64px;
+  height: 64px;
+  background-position: -5px -5px;
+}
+
+.sprite-coffeescript {
+  width: 64px;
+  height: 64px;
+  background-position: -79px -5px;
+}
+
+.sprite-elixir {
+  width: 64px;
+  height: 64px;
+  background-position: -153px -5px;
+}
+
+.sprite-git {
+  width: 64px;
+  height: 64px;
+  background-position: -5px -79px;
+}
+
+.sprite-github {
+  width: 64px;
+  height: 64px;
+  background-position: -79px -79px;
+}
+
+.sprite-github {
+  width: 64px;
+  height: 64px;
+  background-position: -153px -79px;
+}
+
+.sprite-heroku {
+  width: 64px;
+  height: 64px;
+  background-position: -5px -153px;
+}
+
+.sprite-python {
+  width: 64px;
+  height: 64px;
+  background-position: -79px -153px;
+}
+
+.sprite-ruby {
+  width: 64px;
+  height: 64px;
+  background-position: -153px -153px;
+}
+
+.sprite-shell {
+  width: 64px;
+  height: 64px;
+  background-position: -227px -5px;
+}
+
+.sprite-sublime {
+  width: 64px;
+  height: 64px;
+  background-position: -227px -79px;
+}
+
+.sprite-twitter {
+  width: 64px;
+  height: 64px;
+  background-position: -227px -153px;
+}
