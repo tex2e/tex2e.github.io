@@ -2,15 +2,17 @@
 <html class="no-skrollr">
 <head>
   <meta charset="utf-8">
+  <title>TeX2e Introducing</title>
   <meta name="description" content="Mako(TeX2e)の自己紹介ページ">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>TeX2e Introducing</title>
   <link rel="stylesheet" href="css/normalize.css" charset="utf-8">
   <link rel="stylesheet" href="css/common.css" charset="utf-8">
+  <script type="text/javascript" src="js/lib/jquery-2.2.1.min.js"></script>
 </head>
 
 <body>
   <!--
+    Using skrollr.js
     We position the images fixed and therefore need to place them outside of #skrollr-body.
     We will then use data-anchor-target to display the correct image matching the current section (.gap element).
   -->
@@ -238,7 +240,8 @@
     </footer>
   </div><!-- skrollr-body -->
 
-  <script type="text/javascript" src="js/skrollr-0.6.30.js"></script>
+  <!-- skrollr.js -->
+  <script type="text/javascript" src="js/lib/skrollr-0.6.30.js"></script>
   <script type="text/javascript">
   skrollr.init({
     smoothScrolling: false,
