@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="css/normalize.css" charset="utf-8">
   <link rel="stylesheet" href="css/common.css" charset="utf-8">
   <script type="text/javascript" src="js/lib/jquery-2.2.1.min.js"></script>
+  <script type="text/javascript" src="js/lib/d3.v3.min.js"></script>
+  <script type="text/javascript" src="js/langs-plot.js"></script>
+  <!-- <script type="text/javascript" src="js/main.js"></script> -->
 </head>
 
 <body>
@@ -212,21 +215,21 @@
       </div>
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background3.png);"></div>
-    <div class="studied-lang">
+    <div class="mastered-lang">
       <br>
       <br>
       <br>
-      <h2>Studied Languages</h2>
+      <h2>Mastered Languages</h2>
       <br>
-      <div class="list">
-        C, C++, C#<br>
-        Java, Processing<br>
-        PHP, Perl, Ruby, Python<br>
-        JavaScript, CoffeeScript, TypeScript<br>
-        Haskell, Erlang, Elixir<br>
-        Bash, AWK<br>
-      </div>
+      <div id="langs-plot"></div>
+      <p>
+        今まで勉強した言語の一覧を散布図で表した。横軸が難易度を、縦軸が好みの度合いを、円の大きさは言語の使用頻度を表している。
+        個人的な判断ではあるが難易度は、その言語を使うための環境構築の面倒さと、
+        シンタックスやライブラリの使いやすさや、その言語を使い慣れているかどうかなどで判断している。
+      </p>
     </div>
+    <br>
+    <hr>
     <div class="content" id="contact">
       <h2>Contact</h2>
       <br>
