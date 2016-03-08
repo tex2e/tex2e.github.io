@@ -3,304 +3,308 @@
 /* for skrollr.js */
 
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 html, body {
-  height: 100%;
+    height: 100%;
 }
 
 .skrollr-desktop body {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 body {
-  font-family: sans-serif;
+    font-family: sans-serif;
 }
 
 p {
-  margin: 1em 0;
+    margin: 1em 0;
 }
 
 .parallax-image-wrapper {
-  position: fixed;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 .parallax-image-wrapper-50 {
-  height: 50%;
-  top: -50%;
+      height: 50%;
+      top: -50%;
 }
 
 .parallax-image-wrapper-80 {
-  height: 80%;
-  top: -80%;
+    height: 80%;
+    top: -80%;
 }
 
 .parallax-image-wrapper-100 {
-  height: 100%;
-  top: -100%;
+    height: 100%;
+    top: -100%;
 }
 
 .parallax-image {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .parallax-image-50 {
-  height: 200%;
-  top: -50%;
+    height: 200%;
+    top: -50%;
 }
 
 .parallax-image-80 {
-  height: 160%;
-  top: -20%;
+    height: 160%;
+    top: -20%;
 }
 
 .parallax-image-100 {
-  height: 100%;
-  top: 0;
+    height: 100%;
+    top: 0;
 }
 
 .parallax-image.skrollable-between {
-  display: block;
+    display: block;
 }
 
 .no-skrollr .parallax-image-wrapper {
-  display: none !important;
+    display: none !important;
 }
 
 #skrollr-body {
-  height: 100%;
-  overflow: visible;
-  position: relative;
+    height: 100%;
+    overflow: visible;
+    position: relative;
 }
 
 .gap {
-  background: transparent center no-repeat;
-  background-size: cover;
+    background: transparent center no-repeat;
+    background-size: cover;
 }
 
 .skrollr .gap {
-  background: transparent !important;
+    background: transparent !important;
 }
 
 .gap-50 {
-  height: 50%;
+    height: 50%;
 }
 
 .gap-80 {
-  height: 80%;
+    height: 80%;
 }
 
 .gap-100 {
-  height: 100%;
+    height: 100%;
 }
 
 .header, .content {
-  background: #fff;
-  padding: 1em;
+    background: #fff;
+    padding: 1em;
 
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .content-full {
-  height: 100%;
+    height: 100%;
 }
 
 #done {
-  height: 100%;
+    height: 100%;
 }
 
 /* ------------------------------------------- */
 /* user definition */
 
 body {
-  text-align: center;
+    text-align: center;
 }
 
 p {
-  text-align: justify;
-  margin-left: 10%;
-  margin-right: 10%;
+    text-align: justify;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 hr {
-  margin: 30px 30% 30px;
+    margin: 30px 30% 30px;
+}
+
+footer {
+    margin-bottom: 100%;
 }
 
 #about, #skills, #works, #contact {
-  padding-top: 5%;
-  padding-bottom: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 #about {
-  text-align: center;
+    text-align: center;
 }
 
 #about img.profile {
-  width: 300px;
-  height: 300px;
-  border-radius: 150px 150px 150px 150px;
-  border: solid 1px #aaa;
-  margin-top: 30px;
-  margin-bottom: 30px;
+    width: 300px;
+    height: 300px;
+    border-radius: 150px 150px 150px 150px;
+    border: solid 1px #aaa;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #skills .list .box,
 #works  .list .box {
-  display: inline-block;
-  max-width: 300px;
-  margin: 1em;
-  vertical-align: top;
+    display: inline-block;
+    max-width: 300px;
+    margin: 1em;
+    vertical-align: top;
 }
 
 #skills .list.lang .box {
-  height: 250px;
+    height: 250px;
 }
 
 #skills .list.env .box {
-  height: 200px;
+    height: 200px;
 }
 
 #skills .list .box p,
 #works  .list .box p {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 20px;
-  height: 6em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20px;
+    height: 6em;
 }
 
 #works .list .box {
-  max-width: 500px;
-  height: 300px;
+    max-width: 500px;
+    height: 300px;
 }
 
 #contact .icon-list {
-  display: inline-block;
+    display: inline-block;
 }
 
 #contact .icon-list a:hover {
-  position: relative;
-  top: -5px;
+    position: relative;
+    top: -5px;
 }
 
 /* ------------------------------------------- */
 /* for languages scatter plot */
 
 #langs-plot {
-    text-align: center;
-    max-width: 700px;
-    margin: auto;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
 }
 
 #langs-plot .axis path,
 #langs-plot .axis line {
-    fill: none;
-    stroke: black;
-    /*shape-rendering: crispEdges;*/
+      fill: none;
+      stroke: black;
+      /*shape-rendering: crispEdges;*/
 }
 
 #langs-plot .axis text {
-    font-family: sans-serif;
-    font-size: 11px;
+      font-family: sans-serif;
+      font-size: 11px;
 }
 
 #langs-plot .axis text.label {
-    font-family: sans-serif;
-    font-size: 14px;
+      font-family: sans-serif;
+      font-size: 14px;
 }
 
 /* ------------------------------------------- */
 /* icon */
 
 .sprite {
-  background-image: url(../image/spritesheet.png);
-  background-repeat: no-repeat;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    background-image: url(../image/spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sprite-atom {
-  width: 64px;
-  height: 64px;
-  background-position: -5px -5px;
+    width: 64px;
+    height: 64px;
+    background-position: -5px -5px;
 }
 
 .sprite-coffeescript {
-  width: 64px;
-  height: 64px;
-  background-position: -79px -5px;
+    width: 64px;
+    height: 64px;
+    background-position: -79px -5px;
 }
 
 .sprite-elixir {
-  width: 64px;
-  height: 64px;
-  background-position: -153px -5px;
+    width: 64px;
+    height: 64px;
+    background-position: -153px -5px;
 }
 
 .sprite-git {
-  width: 64px;
-  height: 64px;
-  background-position: -5px -79px;
+    width: 64px;
+    height: 64px;
+    background-position: -5px -79px;
 }
 
 .sprite-github {
-  width: 64px;
-  height: 64px;
-  background-position: -79px -79px;
+    width: 64px;
+    height: 64px;
+    background-position: -79px -79px;
 }
 
 .sprite-github {
-  width: 64px;
-  height: 64px;
-  background-position: -153px -79px;
+    width: 64px;
+    height: 64px;
+    background-position: -153px -79px;
 }
 
 .sprite-heroku {
-  width: 64px;
-  height: 64px;
-  background-position: -5px -153px;
+    width: 64px;
+    height: 64px;
+    background-position: -5px -153px;
 }
 
 .sprite-python {
-  width: 64px;
-  height: 64px;
-  background-position: -79px -153px;
+    width: 64px;
+    height: 64px;
+    background-position: -79px -153px;
 }
 
 .sprite-ruby {
-  width: 64px;
-  height: 64px;
-  background-position: -153px -153px;
+    width: 64px;
+    height: 64px;
+    background-position: -153px -153px;
 }
 
 .sprite-shell {
-  width: 64px;
-  height: 64px;
-  background-position: -227px -5px;
+    width: 64px;
+    height: 64px;
+    background-position: -227px -5px;
 }
 
 .sprite-sublime {
-  width: 64px;
-  height: 64px;
-  background-position: -227px -79px;
+    width: 64px;
+    height: 64px;
+    background-position: -227px -79px;
 }
 
 .sprite-twitter {
-  width: 64px;
-  height: 64px;
-  background-position: -227px -153px;
+    width: 64px;
+    height: 64px;
+    background-position: -227px -153px;
 }
