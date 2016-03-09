@@ -140,7 +140,11 @@ hr {
     margin: 30px 30% 30px;
 }
 
-#about, #skills, #works, #contact {
+footer {
+    margin-bottom: 5%;
+}
+
+#about, #skills, #works {
     padding-top: 5%;
     padding-bottom: 5%;
 }
