@@ -24,10 +24,6 @@ var langs = [
     { lang: 'Jade',         liking: 35, difficulty: 20, loc: 10 },
 ];
 
-$(document).ready(function () {
-    plotGraph();
-});
-
 function plotGraph() {
     var langsPlotId = '#langs-plot';
     var width = 700;

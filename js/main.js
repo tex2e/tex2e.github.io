@@ -1,4 +1,12 @@
+'use strict';
 
-$(function() {
-    'use strict';
-})
+$(document).ready(function() {
+    // langs-plot.js
+    plotGraph();
+
+    // lib/skrollr.js
+    skrollr.init({
+        smoothScrolling: false,
+        mobileDeceleration: 0.004
+    });
+});
