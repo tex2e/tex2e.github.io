@@ -130,6 +130,10 @@ body {
     text-align: center;
 }
 
+h2 {
+    margin-top: 1em;
+}
+
 p {
     text-align: justify;
     margin-left: 10%;
@@ -225,7 +229,7 @@ footer {
     color: #000;
 }
 #timeline li {
-    margin: 40px 0;
+    margin: 20px 0;
     position: relative;
 }
 #timeline p {
@@ -233,9 +237,11 @@ footer {
 }
 
 #timeline .date {
+    width: 100px;
+    text-align: right;
     margin-top: -10px;
     top: 50%;
-    left: -128px;
+    left: -158px;
     font-size: 0.95em;
     line-height: 20px;
     position: absolute;
@@ -292,15 +298,23 @@ footer {
     hyphens: auto;
     overflow: hidden;
 }
+#timeline .timeline-content p:before {
+    content: "　";
+}
 
 #timeline label {
-    width: 100%;
     font-size: 1.3em;
     position: absolute;
     z-index: 100;
     cursor: pointer;
     top: 20px;
     transition: transform 0.2s linear;
+}
+#timeline .radio + .relative label:hover {
+    text-decoration: underline;
+}
+#timeline .radio:checked + .relative label:hover {
+    text-decoration: none;
 }
 
 #timeline .radio {
