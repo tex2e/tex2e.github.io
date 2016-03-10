@@ -221,6 +221,8 @@ footer {
 /* for timeline */
 
 #timeline {
+    /* need to fix a height of timeline when add a new item to it */
+    height: 600px;
     text-align: left;
     list-style: none;
     margin: 50px 0 30px 120px;
@@ -303,6 +305,7 @@ footer {
 }
 
 #timeline label {
+    width: 100%;
     font-size: 1.3em;
     position: absolute;
     z-index: 100;
