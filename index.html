@@ -1,3 +1,13 @@
+<!--
+It's nice to meet you. My name is
+
+88P'888'Y88        Y8b Y8P ,8,"88e
+P'  888  'Y ,e e,   Y8b Y   "  888D  ,e e,
+    888    d88 88b   Y8b       88P  d88 88b
+    888    888   ,  e Y8b     ,*"   888   ,
+    888     "YeeP" d8b Y8b  8888888  "YeeP"
+
+-->
 <!DOCTYPE html>
 <html class="no-skrollr">
 <head>
@@ -21,19 +31,18 @@
     We position the images fixed and therefore need to place them outside of #skrollr-body.
     We will then use data-anchor-target to display the correct image matching the current section (.gap element).
   -->
-
   <div
     class="parallax-image-wrapper parallax-image-wrapper-80"
-    data-anchor-target="#about + .gap"
+    data-anchor-target="#history + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-80"
       style="background-image:url(image/background/background1.png)"
-      data-anchor-target="#about + .gap"
-      data-bottom-top="transform: translate3d(0px, -80%, 0px);"
-      data-top-bottom="transform: translate3d(0px, 80%, 0px);"
+      data-anchor-target="#history + .gap"
+      data-bottom-top="transform: translate3d(0px, -70%, 0px);"
+      data-top-bottom="transform: translate3d(0px, 70%, 0px);"
     ></div>
     <!--the +/-80% translation can be adjusted to control the speed difference of the image-->
   </div>
@@ -69,7 +78,8 @@
   </div>
 
   <div id="skrollr-body">
-    <div class="header" id="about">
+    <!-- About -->
+    <div class="header" id="about" >
       <h4>Welcome!</h4>
       <div class="profile">
         <img src="image/web-optim.png" alt="TeX2e" /><br>
@@ -77,34 +87,132 @@
       <h3>Mako</h3>
       <h4>(TeX2e)</h4>
       <br>
-      <span>長野高専生・自称Rubyプログラマ・怠惰による怠惰のためのプログラミング</span>
+      <span>長野高専生・自称Rubyプログラマ・怠惰のためのプログラミング</span>
+    </div>
+    <!-- Timeline -->
+    <div class="content" id="history">
+      <hr>
+      <h2>Timeline</h2>
+      <p>
+        誕生から現在までの歩みをタイムライン形式で表した。タイトル部分をタップすると説明が表示される。
+      </p>
+      <ul id='timeline'>
+        <li class='work'>
+          <input class='radio' id='work1998' name='works' type='radio' checked>
+          <div class="relative">
+            <label for='work1998'>誕生</label>
+            <span class='date'>1998</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              長野で冬季オリンピックがあった年に産まれる。父の外見と母の性格が合わさった男の子として成長する。
+              父も母もパソコンに詳しく、小さいときからよくパソコンのゲームで遊んだりした。
+            </p>
+          </div>
+        </li>
+        <li class='work'>
+          <input class='radio' id='work2003-2008' name='works' type='radio'>
+          <div class="relative">
+            <label for='work2003-2008'>趣味は囲碁</label>
+            <span class='date'>2003 - 2008</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              6歳のときに祖父から囲碁を教わる。
+              負けず嫌いだったのもあってよく勉強し、父や祖父に勝てるようになるまでになった。
+              小学6年のときには長野市の小学生囲碁大会で3位を取った。
+              正式ではないが現在は初段くらいはある。
+
+              余談だが、囲碁以外にも将棋・チェス・象棋のルールも把握している。
+              友達と将棋やチェスで遊んだときは割と強い方ではあった。
+            </p>
+          </div>
+        </li>
+        <li class='work'>
+          <input class='radio' id='work2012' name='works' type='radio'>
+          <div class="relative">
+            <label for='work2012'>パソコン検定3級を取得</label>
+            <span class='date'>2012</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              中学の部活で「技術部」という名のパソコンで遊んでいる部活があり、
+              そこでパソコン検定という、タイピングとネットワーク基礎や
+              Word, Excel, PowerPointの使い方などのパソコンを使って行う試験があり、その3級を取得している。
+            </p>
+          </div>
+        </li>
+        <li class='work'>
+          <input class='radio' id='work2013' name='works' type='radio'>
+          <div class="relative">
+            <label for='work2013'>長野高専の情報科に入学</label>
+            <span class='date'>2013</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              高専一年目の授業で Processing を扱って以来プログラミングは唱えると動く
+              「リアル魔法」だと考えるようになり、プログラミングの素晴らしさに気づく。
+              この後、C, Java, JavaScript, PHP に手を伸ばす。
+              しかしWeb関連の勉強（PHPあたり）に入るとサーバの話も混じり、勉強しないといけないことが山ほどあると知る。
+            </p>
+          </div>
+        </li>
+        <li class='work'>
+          <input class='radio' id='work2014' name='works' type='radio'>
+          <div class="relative">
+            <label for='work2014'>Ruby信者となる</label>
+            <span class='date'>2014</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              このころ、Rubyのパパ（まつもとゆきひろ）さんが長野高専の講演会に来ると聞き、Rubyの勉強を始める。
+              講演会の後、自分も人の役に立つコードを書きたいと思うようになる。
+              この後、RubyのメタプログラミングでDSLを書いたり、RakeでLaTeXのビルドの自動化をしたり、
+              testunitでテスト駆動開発をしたりして遊ぶ。
+            </p>
+          </div>
+        </li>
+        <li class='work'>
+          <input class='radio' id='work2015' name='works' type='radio'>
+          <div class="relative">
+            <label for='work2015'>学生会長賞に「Ecoris」が表彰される</label>
+            <span class='date'>2015</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              学園祭のクラス企画でEcoris（3Dテトリス + エコ）という LeapMotion で行う3Dテトリス
+              のゲームのプログラム（C#）部分を担当し「学生会長賞」を勝ち取った。
+              使用環境は Unity + C# + LeapMotion
+            </p>
+          </div>
+        </li>
+        <!--
+        <li class='work'>
+          <input class='radio' id='work20xx' name='works' type='radio'>
+          <div class="relative">
+            <label for='work20xx'></label>
+            <span class='date'>20xx</span>
+            <span class='circle'></span>
+          </div>
+          <div class='timeline-content'>
+            <p>
+              description...
+            </p>
+          </div>
+        </li>
+        -->
+      </ul>
       <br>
       <br>
-      <h2>History</h2>
-      <p>
-        現長野高専学生。高専一年目の授業で Processing を扱って以来プログラミングは唱えると動く
-        「リアル魔法」だと考えるようになり、プログラミングの素晴らしさに気づく。
-        この後、C, Java, JavaScript, PHP に手を伸ばす。
-        しかしWeb関連の勉強（PHPあたり）に入るとサーバの話も混じり、勉強しないといけないことが山ほどあると知る。
-      </p>
-      <p>
-        このころ、Rubyのパパ（まつもとゆきひろ）さんが長野高専の講演会に来ると聞き、Rubyの勉強を始める。
-        講演会の後、自分も人の役に立つコードを書きたいと思うようになる。
-        この後、RubyのメタプログラミングでDSLを書いたり、RakeでLaTeXのビルドの自動化をしたり、
-        testunitでテスト駆動開発をしたりして遊ぶ。
-      </p>
-      <p>
-        高専3年目のときにサーバを借りて、高専がwebに載せている補講情報を読み取って、
-        前日になるとメールで送信するスクリプトをRubyで書く。
-        これによって僕と友達は高専の補講日を忘れることはなくなった（はず）。
-        また、学園祭のクラス企画でEcoris（3Dテトリス + エコ）というゲームのプログラム（C#）部分を担当し
-        「学生会長賞」を勝ち取った。
-      </p>
-      <p>
-        to be continue...
-      </p>
     </div>
     <div class="gap gap-80" style="background-image:url(image/background/background1.png);"></div>
+    <!-- Skills -->
     <div class="content" id="skills">
       <h2>Skills</h2>
       <p>
@@ -199,32 +307,31 @@
           <h4>Heroku</h4>
           <p>
             RubyやNode.jsなどが動くサーバを無料で提供しているサービス。
-            Git使いだったこともあり、デプロイは楽。
+            不便な部分もあるが、とりあえずこれで我慢。
           </p>
         </div>
       </div>
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background2.png);"></div>
+    <!-- Works -->
     <div class="content" id="works">
       <h2>Works</h2>
       <div class="list">
         <div class="box">
           <img src="image/works/ecoris.png" alt="Ecoris" />
-          <h4><a href="https://github.com/13J-Programmers/3J-class-project">Ecoris (view on GitHub)</a></h4>
+          <h4><a href="https://github.com/13J-Programmers/3J-class-project" target="_blank">Ecoris (View on GitHub)</a></h4>
           <p>
             高専3年生の学園祭（工嶺祭）のクラス企画で展示した LeapMotion で行う3Dテトリス。
-            EcorisのEcoはエコロジーから来ており、手の動きを利用して缶ブロックを潰したり、生ごみブロックを振って小さくしたりしてテトリスをすることができる。
-            実際のところ、ゲームの難易度はかなり高い。
+            Ecoris（3Dテトリス + エコ）という、手の動きを利用して缶ブロックを潰したり、
+            生ごみブロックを振って小さくしたりして遊ぶテトリスのプログラム（C#）部分を担当し「学生会長賞」を勝ち取った。
             使用環境は Unity + C#
           </p>
         </div>
       </div>
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background3.png);"></div>
-    <div class="mastered-lang">
-      <br>
-      <br>
-      <br>
+    <!-- Mastered Languages -->
+    <div class="content" id="mastered-lang">
       <h2>Mastered Languages</h2>
       <br>
       <div id="langs-plot"></div>
@@ -234,8 +341,9 @@
         シンタックスやライブラリの使いやすさや、その言語を使い慣れているかどうかなどで判断している。
       </p>
     </div>
-    <hr>
+    <!-- Contact -->
     <div class="content" id="contact">
+      <hr>
       <h2>Contact</h2>
       <br>
       <div class="icon-list">
@@ -244,7 +352,7 @@
       </div>
     </div>
     <footer>
-      Images from <a href="http://www.freepik.com">Freepik.com</a>, thanks!<br>
+      Images from <a href="http://www.freepik.com" target="_blank">Freepik.com</a>, thanks!<br>
     </footer>
     <br>
     <!-- these <br> tags are to avoid not scrolling on smartphone and tablet -->
