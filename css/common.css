@@ -18,7 +18,8 @@ Following rules apply:
   margin: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -407,14 +408,6 @@ hr {
 }
 
 .gap-100 {
-  height: 100%;
-}
-
-.content-full {
-  height: 100%;
-}
-
-#done {
   height: 100%;
 }
 
