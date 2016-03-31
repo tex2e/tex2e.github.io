@@ -41,14 +41,14 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
   -->
   <div
     class="parallax-image-wrapper parallax-image-wrapper-80"
-    data-anchor-target="#history + .gap"
+    data-anchor-target=".history + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-80"
       style="background-image:url(image/background/background1.png)"
-      data-anchor-target="#history + .gap"
+      data-anchor-target=".history + .gap"
       data-bottom-top="transform: translate3d(0px, -70%, 0px);"
       data-top-bottom="transform: translate3d(0px, 70%, 0px);"
     ></div>
@@ -57,14 +57,14 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
 
   <div
     class="parallax-image-wrapper parallax-image-wrapper-80"
-    data-anchor-target="#skills + .gap"
+    data-anchor-target=".skills + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-50"
       style="background-image:url(image/background/background2.png)"
-      data-anchor-target="#skills + .gap"
+      data-anchor-target=".skills + .gap"
       data-bottom-top="transform: translate3d(0px, -60%, 0px);"
       data-top-bottom="transform: translate3d(0px, 60%, 0px);"
     ></div>
@@ -72,14 +72,14 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
 
   <div
     class="parallax-image-wrapper parallax-image-wrapper-80"
-    data-anchor-target="#works + .gap"
+    data-anchor-target=".works + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-50"
       style="background-image:url(image/background/background3.png)"
-      data-anchor-target="#works + .gap"
+      data-anchor-target=".works + .gap"
       data-bottom-top="transform: translate3d(0px, -60%, 0px);"
       data-top-bottom="transform: translate3d(0px, 60%, 0px);"
     ></div>
@@ -87,47 +87,45 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
 
   <div id="skrollr-body">
     <!-- About -->
-    <div class="header" id="about" >
+    <div class="l-content about">
       <h4>Welcome!</h4>
-      <div class="profile">
-        <img src="image/web-optim.png" alt="TeX2e" /><br>
-      </div>
+      <img src="image/web-optim.png" alt="TeX2e" class="about__profile img img-circle"/><br>
       <h3>Mako</h3>
       <h4>(TeX2e)</h4>
       <br>
       <span>長野高専生・自称Rubyプログラマ・怠惰のためのプログラミング</span>
     </div>
     <!-- Timeline -->
-    <div class="content" id="history">
+    <div class="l-content history">
       <hr>
       <h2>Timeline</h2>
-      <p>
+      <p class="u-sidemargin-10percent">
         誕生から現在までの歩みをタイムライン形式で表した。タイトル部分をタップすると説明が表示される。
       </p>
-      <ul id='timeline'>
-        <li class='work'>
-          <input class='radio' id='work1998' name='works' type='radio' checked>
-          <div class="relative">
-            <label for='work1998'>誕生</label>
-            <span class='date'>1998</span>
-            <span class='circle'></span>
+      <ul class="history__timeline timeline">
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work1998" name="timeline" type="radio" checked>
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work1998">誕生</label>
+            <span class="timeline__date">1998</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               長野で冬季オリンピックがあった年に生まれ、父の外見と母の性格が合わさった男の子として成長する。
               父も母もパソコンに詳しく、パソコンと技術書に囲まれた環境で育った。
             </p>
           </div>
         </li>
-        <li class='work'>
-          <input class='radio' id='work2003-2008' name='works' type='radio'>
-          <div class="relative">
-            <label for='work2003-2008'>趣味は囲碁</label>
-            <span class='date'>2003 - 2008</span>
-            <span class='circle'></span>
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work2003-2008" name="timeline" type="radio">
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work2003-2008">趣味は囲碁</label>
+            <span class="timeline__date">2003 - 2008</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               6歳のときに祖父から囲碁を教わる。
               負けず嫌いだったのもあってよく勉強し、父や祖父に勝てるようになるまでになった。
               小学6年のときには長野市の小学生囲碁大会で3位を取った。
@@ -138,30 +136,30 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             </p>
           </div>
         </li>
-        <li class='work'>
-          <input class='radio' id='work2012' name='works' type='radio'>
-          <div class="relative">
-            <label for='work2012'>パソコン検定3級を取得</label>
-            <span class='date'>2012</span>
-            <span class='circle'></span>
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work2012" name="timeline" type="radio">
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work2012">パソコン検定3級を取得</label>
+            <span class="timeline__date">2012</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               中学の部活で「技術部」という名のパソコンで遊んでいる部活があり、
               そこでパソコン検定という、タイピングやネットワーク基礎や
               Word, Excel, PowerPointの使い方などのパソコンを使って行う試験があり、その3級を取得している。
             </p>
           </div>
         </li>
-        <li class='work'>
-          <input class='radio' id='work2013' name='works' type='radio'>
-          <div class="relative">
-            <label for='work2013'>長野高専の情報科に入学</label>
-            <span class='date'>2013</span>
-            <span class='circle'></span>
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work2013" name="timeline" type="radio">
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work2013">長野高専の情報科に入学</label>
+            <span class="timeline__date">2013</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               高専一年目の授業で Processing を扱って以来プログラミングは唱えると動く
               「リアル魔法」だと考えるようになり、プログラミングの素晴らしさに気づく。
               この後、C, Java, JavaScript, PHP に手を伸ばす。
@@ -169,15 +167,15 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             </p>
           </div>
         </li>
-        <li class='work'>
-          <input class='radio' id='work2014' name='works' type='radio'>
-          <div class="relative">
-            <label for='work2014'>Ruby信者となる</label>
-            <span class='date'>2014</span>
-            <span class='circle'></span>
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work2014" name="timeline" type="radio">
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work2014">Ruby信者となる</label>
+            <span class="timeline__date">2014</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               このころ、Rubyのパパ（まつもとゆきひろ）さんが長野高専の講演会に来ると聞き、Rubyの勉強を始める。
               講演会の後、自分も人の役に立つコードを書きたいと思うようになる。
               この後、RubyのメタプログラミングでDSLを書いたり、RakeでLaTeXのビルドの自動化をしたり、
@@ -185,15 +183,15 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             </p>
           </div>
         </li>
-        <li class='work'>
-          <input class='radio' id='work2015' name='works' type='radio'>
-          <div class="relative">
-            <label for='work2015'>学生会長賞に「Ecoris」が表彰される</label>
-            <span class='date'>2015</span>
-            <span class='circle'></span>
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work2015" name="timeline" type="radio">
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work2015">学生会長賞に「Ecoris」が表彰される</label>
+            <span class="timeline__date">2015</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               学園祭のクラス企画でEcoris（3Dテトリス + エコ）という LeapMotion で行う3Dテトリス
               のゲームのプログラム（C#）部分を担当し「学生会長賞」を勝ち取った。
               使用環境は Unity + C# + LeapMotion
@@ -201,15 +199,15 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
           </div>
         </li>
         <!--
-        <li class='work'>
-          <input class='radio' id='work20xx' name='works' type='radio'>
-          <div class="relative">
-            <label for='work20xx'></label>
-            <span class='date'>20xx</span>
-            <span class='circle'></span>
+        <li class="timeline__item">
+          <input class="timeline__radio" id="work20xx" name="timeline" type="radio">
+          <div class="timeline__meta">
+            <label class="timeline__label" for="work20xx"></label>
+            <span class="timeline__date">20xx</span>
+            <span class="timeline__circle"></span>
           </div>
-          <div class='timeline-content'>
-            <p>
+          <div class="timeline__content">
+            <p class="timeline__desc">
               description...
             </p>
           </div>
@@ -221,17 +219,17 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background1.png);"></div>
     <!-- Skills -->
-    <div class="content" id="skills">
+    <div class="l-content skills">
       <h2>Skills</h2>
-      <p>
+      <p class="u-sidemargin-10percent">
         プログラミング言語は多くの言語から影響されて作られた経緯があるため、幾つかの言語を同時に勉強するのが効率がいいかなと思っている。
         もちろん勉強した全ての言語を使いこなせるという訳ではないが、勉強した中で特に好きな言語（~=&nbsp;得意な言語）について紹介する。
       </p>
       <!-- Languages -->
-      <div class="list lang">
+      <div class="skills__list skills__languages">
         <hr>
         <h3>Languages</h3>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-ruby"></i>
           <h4>Ruby</h4>
           <p>
@@ -240,7 +238,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             Perlの正規表現と同等の機能を持つ点もポイント。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-elixir"></i>
           <h4>Elixir</h4>
           <p>
@@ -249,7 +247,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             macroによるメタプログラミングも強力。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-python"></i>
           <h4>Python</h4>
           <p>
@@ -258,7 +256,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             コンパイル &amp; 実行速度も早い。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-coffeescript"></i>
           <h4>CoffeeScript</h4>
           <p>
@@ -267,7 +265,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             変換後はコメントが消えてしまうが、比較的読みやすいコードが生成される。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-shell"></i>
           <h4>Shell</h4>
           <p>
@@ -278,24 +276,24 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
         </div>
       </div>
       <!-- Environment -->
-      <div class="list env">
+      <div class="skills_list skills__environments">
         <hr>
         <h3>Environment</h3>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-atom"></i>
           <h4>Atom</h4>
           <p>
             Github製のエディタ。スニペットやパッケージの追加が楽なのでメインのiMacで使用している。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-git"></i>
           <h4>Git</h4>
           <p>
             バージョン管理システム。Ubuntuではコマンドから、MacOSではSourceTreeを通して使用している。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-github"></i>
           <h4>GitHub</h4>
           <p>
@@ -303,14 +301,14 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             クラス企画の作業はGithubを通して行っている。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-sublime"></i>
           <h4>Sublime</h4>
           <p>
             どこにでも持ち運び可能な軽量エディタ。乏しい環境下でもコーディングのパフォーマンスを落とさずに済む。
           </p>
         </div>
-        <div class="box">
+        <div class="skills__item item">
           <i class="sprite sprite-heroku"></i>
           <h4>Heroku</h4>
           <p>
@@ -322,10 +320,10 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background2.png);"></div>
     <!-- Works -->
-    <div class="content" id="works">
+    <div class="l-content works">
       <h2>Works</h2>
       <div class="list">
-        <div class="box">
+        <div class="works__item item">
           <img src="image/works/ecoris.png" alt="Ecoris" />
           <h4><a href="https://github.com/13J-Programmers/3J-class-project" target="_blank">Ecoris (View on GitHub)</a></h4>
           <p>
@@ -339,24 +337,24 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background3.png);"></div>
     <!-- Mastered Languages -->
-    <div class="content" id="mastered-lang">
+    <div class="l-content mastered-lang">
       <h2>Mastered Languages</h2>
       <br>
       <div id="langs-plot"></div>
-      <p>
+      <p class="u-sidemargin-10percent">
         今まで勉強した言語の一覧を散布図で表した。横軸が難易度を、縦軸が好みの度合いを、円の大きさは言語の使用頻度を表している。
         個人的な判断ではあるが難易度は、その言語を使うための環境構築の面倒さと、
         シンタックスやライブラリの使いやすさや、その言語を使い慣れているかどうかなどで判断している。
       </p>
     </div>
     <!-- Contact -->
-    <div class="content" id="contact">
+    <div class="l-content contact">
       <hr>
       <h2>Contact</h2>
       <br>
-      <div class="icon-list">
-        <a href="https://github.com/TeX2e"><img src="image/contact/github.png" alt="GitHub" /></a>
-        <a href="https://twitter.com/TeX2e"><img src="image/contact/twitter.png" alt="Twitter" /></a>
+      <div class="contact__icon-list">
+        <a class="contact__icon-link" href="https://github.com/TeX2e"  target="_blank"><img src="image/contact/github.png"  alt="GitHub"  /></a>
+        <a class="contact__icon-link" href="https://twitter.com/TeX2e" target="_blank"><img src="image/contact/twitter.png" alt="Twitter" /></a>
       </div>
     </div>
     <footer>
