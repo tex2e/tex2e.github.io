@@ -123,11 +123,11 @@ hr {
   position: absolute;
 }
 .timeline__circle {
-  margin-top: -10px;
+  margin-top: -9px;
   top: 50%;
   left: -44px;
-  width: 10px;
-  height: 10px;
+  width: 18px;
+  height: 18px;
   background: #48b379;
   border: 5px solid #eee9dc;
   border-radius: 50%;
