@@ -25,7 +25,7 @@ var langs = [
 ];
 
 function plotGraph() {
-    var langsPlotId = '#langs-plot';
+    var langsPlotId = '#js-langs-plot';
     var width = 700;
     var height = 500;
     var margin = {
