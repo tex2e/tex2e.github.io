@@ -38,7 +38,7 @@ h2 {
 }
 
 p {
-  margin: 1em 0;
+  margin: 1em 1em;
   text-align: justify;
 }
 
@@ -50,27 +50,13 @@ hr {
 /* Layout */
 /*   prefix with .l- */
 
-.l-header {
-  /**/
-}
-
-.l-content {
+.layout-content {
   background: #fff;
   padding: 1em;
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-/* ------------------------------------------------ */
-/* Module */
-
-/* common module */
-.item {
-  display: inline-block;
-  margin: 1em;
-  vertical-align: top;
 }
 
 /* ---------------------------- */
@@ -91,26 +77,21 @@ hr {
 /* ---------------------------- */
 /* contents of skills */
 .skills__item {
-  max-width: 300px;
-}
-@media screen and (max-width: 480px) {
-  .skills__environments {
-    display: none;
-  }
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* ---------------------------- */
 /* contents of works */
 .works__item {
-  margin-left: 4em;
-  margin-right: 4em;
-  max-width: 500px;
   height: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* ---------------------------- */
 /* contents of learned-lang */
-.learned-lang {}
 
 #js-langs-plot {
   text-align: center;
@@ -231,27 +212,6 @@ hr {
   height: 64px;
   background-position: -227px -153px;
 }
-
-/* ------------------------------------------------ */
-/* Utils */
-/*   prefix with .u- */
-
-.u-sidemargin-10percent {
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-/* ------------------------------------------------ */
-/* State */
-/*   prefix with .is- */
-
-
-/* ------------------------------------------------ */
-/* Theme */
-
-
-
-
 
 
 /* ------------------------------------------------ */

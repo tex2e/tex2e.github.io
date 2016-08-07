@@ -97,18 +97,18 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
 
   <div id="skrollr-body">
     <!-- About -->
-    <div class="l-content about">
+    <div class="layout-content about">
       <h4>Welcome!</h4>
-      <img src="image/web-optim.png" alt="TeX2e" class="about__profile img img-circle"/><br>
+      <img src="image/web-optim.png" alt="tex2e" class="about__profile img img-circle"/><br>
       <h3>Mako</h3>
-      <h4>(TeX2e)</h4>
+      <h4>(<a href="http://github.com/tex2e">tex2e</a>)</h4>
       <br>
       <span>長野高専生・自称Rubyプログラマ・怠惰のためのプログラミング</span>
       <br>
     </div>
-    <div class="l-content history">
+    <div class="layout-content history">
       <h3>Preface</h3>
-      <p class="u-sidemargin-10percent">
+      <p class="container">
         　僕は長い時間Rubyをさわってきたので、自分の考えを早くコードに落とせるのはRubyです。
         しかし、全ての問題に対してRubyが万能というわけではありません。
         Rubyはそもそも大規模なプロジェクトには向いていない面があります。
@@ -118,17 +118,17 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background1.png);"></div>
     <!-- Skills -->
-    <div class="l-content skills">
+    <div class="layout-content skills">
       <h2>Skills</h2>
-      <p class="u-sidemargin-10percent">
+      <p class="container">
         プログラミング言語は多くの言語から影響されて作られた経緯があるため、幾つかの言語を同時に勉強するのが効率がいいかなと思っています。
         もちろん勉強した全ての言語を使いこなせるという訳ではないですが、勉強した中で特に好きな言語（~=&nbsp;得意な言語）について紹介します。
       </p>
       <!-- Languages -->
-      <div class="skills__list skills__languages">
+      <div class="row">
         <hr>
         <h3>Languages</h3>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 skills__item">
           <i class="sprite sprite-ruby"></i>
           <h4>Ruby</h4>
           <p>
@@ -137,7 +137,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             優秀な正規表現を持つ点もポイント。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 skills__item">
           <i class="sprite sprite-elixir"></i>
           <h4>Elixir</h4>
           <p>
@@ -146,7 +146,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             macroによるメタプログラミングも強力。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 skills__item">
           <i class="sprite sprite-python"></i>
           <h4>Python</h4>
           <p>
@@ -155,7 +155,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             機械学習プログラミングのときによくお世話になっている。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 col-md-offset-2 skills__item">
           <i class="sprite sprite-coffeescript"></i>
           <h4>CoffeeScript</h4>
           <p>
@@ -165,7 +165,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             JavaScriptを書くときのテクニックの勉強に大いに役立った。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0 skills__item">
           <i class="sprite sprite-shell"></i>
           <h4>Shell</h4>
           <p>
@@ -176,24 +176,24 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
         </div>
       </div>
       <!-- Environment -->
-      <div class="skills_list skills__environments">
+      <div class="row hidden-xs hidden-sm">
         <hr>
         <h3>Environment</h3>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 skills__item">
           <i class="sprite sprite-atom"></i>
           <h4>Atom</h4>
           <p>
             Github製のエディタ。スニペットやパッケージの追加が楽なのでメインのiMacで使用している。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 skills__item">
           <i class="sprite sprite-git"></i>
           <h4>Git</h4>
           <p>
             バージョン管理システム。Ubuntuではコマンドから、MacOSではSourceTreeを通して使用している。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 skills__item">
           <i class="sprite sprite-github"></i>
           <h4>GitHub</h4>
           <p>
@@ -201,14 +201,14 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             クラス企画の作業はGithubを通して行っている。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 col-md-offset-2 skills__item">
           <i class="sprite sprite-sublime"></i>
           <h4>Sublime</h4>
           <p>
             どこにでも持ち運び可能な軽量エディタ。乏しい環境下でもコーディングのパフォーマンスを落とさずに済む。
           </p>
         </div>
-        <div class="skills__item item">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0 skills__item">
           <i class="sprite sprite-heroku"></i>
           <h4>Heroku</h4>
           <p>
@@ -220,10 +220,10 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background2.png);"></div>
     <!-- Works -->
-    <div class="l-content works">
+    <div class="layout-content works">
       <h2>Works</h2>
-      <div class="list">
-        <div class="works__item item">
+      <div class="row list">
+        <div class="col-sm-6 col-md-6 works__item">
           <img src="image/works/ecoris.png" alt="Ecoris" />
           <h4><a href="https://github.com/13J-Programmers/3J-class-project/" target="_blank">View on GitHub</a></h4>
           <p>
@@ -233,7 +233,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             使用環境は Unity + C#
           </p>
         </div>
-        <div class="works__item item">
+        <div class="col-sm-6 col-md-6 works__item">
           <img src="image/works/search-comments.png" alt="Ecoris" />
           <h4>
             <a href="https://github.com/tex2e/search-comments/" target="_blank">View on GitHub</a> |
@@ -249,18 +249,18 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="gap gap-50" style="background-image:url(image/background/background3.png);"></div>
     <!-- Learned Languages -->
-    <div class="l-content learned-lang">
+    <div class="layout-content learned-lang">
       <h2>Learned Languages</h2>
       <br>
       <div id="js-langs-plot"></div>
-      <p class="u-sidemargin-10percent">
+      <p class="container">
         今まで勉強した言語の一覧を散布図で表しました。横軸が難易度を、縦軸が好みの度合いを、円の大きさは言語の使用頻度を表しています。
         個人的な判断ですが難易度は、その言語を使うための環境構築の面倒さと、
         シンタックスやライブラリの使いやすさや、その言語を使い慣れているかどうかなどで判断しています。
       </p>
     </div>
     <!-- Contact -->
-    <div class="l-content contact">
+    <div class="layout-content contact">
       <hr>
       <h2>Contact</h2>
       <br>
