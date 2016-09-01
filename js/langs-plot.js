@@ -1,28 +1,29 @@
 'use strict';
 
 var langs = [
-    { lang: 'C',            liking: 20, difficulty: 30, loc: 30 },
-    { lang: 'C++',          liking: 30, difficulty: 40, loc: 10 },
-    { lang: 'Java',         liking: 40, difficulty: 60, loc: 20 },
+    { lang: 'C',            liking: 20, difficulty: 45, loc: 30 },
+    { lang: 'C++',          liking: 30, difficulty: 55, loc: 10 },
+    { lang: 'Java',         liking: 40, difficulty: 60, loc: 30 },
+    { lang: 'Scala',        liking: 55, difficulty: 70, loc: 10 },
     { lang: 'C#',           liking: 60, difficulty: 54, loc: 45 },
     { lang: 'PHP',          liking: 41, difficulty: 35, loc: 10 },
     { lang: 'Perl',         liking: 50, difficulty: 63, loc: 10 },
-    { lang: 'Perl6',        liking: 56, difficulty: 60, loc: 10 },
+    { lang: 'Perl6',        liking: 65, difficulty: 60, loc: 10 },
     { lang: 'Ruby',         liking: 85, difficulty: 53, loc: 90 },
     { lang: 'Python',       liking: 70, difficulty: 66, loc: 40 },
     { lang: 'JavaScript',   liking: 68, difficulty: 40, loc: 91 },
     { lang: 'CoffeeScript', liking: 80, difficulty: 30, loc: 40 },
     { lang: 'Haskell',      liking: 20, difficulty: 90, loc:  0 },
-    { lang: 'Erlang',       liking: 40, difficulty: 80, loc: 10 },
+    { lang: 'Erlang',       liking: 30, difficulty: 85, loc: 10 },
     { lang: 'Elixir',       liking: 73, difficulty: 75, loc: 10 },
     { lang: 'Bash',         liking: 40, difficulty: 50, loc: 50 },
     { lang: 'Awk',          liking: 50, difficulty: 28, loc: 10 },
     { lang: 'Make',         liking: 55, difficulty: 20, loc: 15 },
     { lang: 'Rake',         liking: 60, difficulty: 25, loc:  5 },
-    { lang: 'HTML',         liking: 27, difficulty:  5, loc: 25 },
+    { lang: 'HTML',         liking: 30, difficulty:  5, loc: 25 },
     { lang: 'CSS',          liking: 35, difficulty:  9, loc: 25 },
-    { lang: 'Sass',         liking: 41, difficulty: 15, loc: 10 },
-    { lang: 'Jade',         liking: 35, difficulty: 20, loc: 10 },
+    { lang: 'Scss',         liking: 41, difficulty: 15, loc: 10 },
+    { lang: 'Jade',         liking: 30, difficulty: 20, loc: 10 },
 ];
 
 function plotGraph() {
