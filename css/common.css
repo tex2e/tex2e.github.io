@@ -99,6 +99,10 @@ hr {
   margin: auto;
 }
 
+#js-langs-plot text.label {
+  font-size: 12px;
+}
+
 #js-langs-plot .axis path,
 #js-langs-plot .axis line {
   fill: none;
@@ -112,7 +116,7 @@ hr {
 
 #js-langs-plot .axis text.label {
   font-family: sans-serif;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* ---------------------------- */

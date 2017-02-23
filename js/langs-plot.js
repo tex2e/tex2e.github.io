@@ -1,29 +1,33 @@
 'use strict';
 
 var langs = [
-  { lang: 'C',            liking: 20, difficulty: 45, loc: 30 },
-  { lang: 'C++',          liking: 30, difficulty: 55, loc: 10 },
-  { lang: 'Java',         liking: 40, difficulty: 60, loc: 30 },
-  { lang: 'Scala',        liking: 55, difficulty: 70, loc: 10 },
-  { lang: 'C#',           liking: 60, difficulty: 54, loc: 45 },
-  { lang: 'PHP',          liking: 41, difficulty: 35, loc: 10 },
-  { lang: 'Perl',         liking: 50, difficulty: 63, loc: 10 },
-  { lang: 'Perl6',        liking: 65, difficulty: 60, loc: 10 },
-  { lang: 'Ruby',         liking: 85, difficulty: 53, loc: 90 },
-  { lang: 'Python',       liking: 70, difficulty: 66, loc: 40 },
-  { lang: 'JavaScript',   liking: 68, difficulty: 40, loc: 91 },
-  { lang: 'CoffeeScript', liking: 80, difficulty: 30, loc: 40 },
-  { lang: 'Haskell',      liking: 20, difficulty: 90, loc:  0 },
-  { lang: 'Erlang',       liking: 30, difficulty: 85, loc: 10 },
-  { lang: 'Elixir',       liking: 73, difficulty: 75, loc: 10 },
-  { lang: 'Bash',         liking: 40, difficulty: 50, loc: 50 },
-  { lang: 'Awk',          liking: 50, difficulty: 28, loc: 10 },
-  { lang: 'Make',         liking: 55, difficulty: 20, loc: 15 },
-  { lang: 'Rake',         liking: 60, difficulty: 25, loc:  5 },
-  { lang: 'HTML',         liking: 30, difficulty:  5, loc: 25 },
-  { lang: 'CSS',          liking: 35, difficulty:  9, loc: 25 },
-  { lang: 'Scss',         liking: 41, difficulty: 15, loc: 10 },
-  { lang: 'Jade',         liking: 30, difficulty: 20, loc: 10 },
+  // Somehow first 2 lang label didn't print unless put 2 meaningless padding
+  { lang: '', favorite: -100, devSpeed: -100, loc: 0 },
+  { lang: '', favorite: -100, devSpeed: -100, loc: 0 },
+  { lang: 'C',            favorite: 30, devSpeed: 45, loc: 25 },
+  { lang: 'C++',          favorite: 40, devSpeed: 35, loc: 15 },
+  { lang: 'Java',         favorite: 45, devSpeed: 40, loc: 25 },
+  { lang: 'Scala',        favorite: 50, devSpeed: 20, loc:  5 },
+  { lang: 'Kotlin',       favorite: 45, devSpeed: 10, loc:  1 },
+  { lang: 'C#',           favorite: 70, devSpeed: 40, loc: 50 },
+  { lang: 'PHP',          favorite: 40, devSpeed: 45, loc: 10 },
+  { lang: 'Perl',         favorite: 45, devSpeed: 20, loc: 10 },
+  { lang: 'Perl6',        favorite: 95, devSpeed: 15, loc: 20 },
+  { lang: 'Ruby',         favorite: 80, devSpeed: 80, loc: 80 },
+  { lang: 'Python',       favorite: 80, devSpeed: 60, loc: 70 },
+  { lang: 'JavaScript',   favorite: 55, devSpeed: 75, loc: 70 },
+  { lang: 'Node.js',      favorite: 55, devSpeed: 50, loc: 50 },
+  { lang: 'CoffeeScript', favorite: 65, devSpeed: 20, loc: 40 },
+  { lang: 'Erlang',       favorite: 30, devSpeed: 10, loc: 10 },
+  { lang: 'Elixir',       favorite: 85, devSpeed: 35, loc: 40 },
+  { lang: 'Bash',         favorite: 30, devSpeed: 65, loc: 50 },
+  { lang: 'Awk',          favorite: 50, devSpeed: 35, loc: 10 },
+  { lang: 'Haskell',      favorite: 25, devSpeed:  5, loc:  1 },
+  { lang: 'Lisp',         favorite: 20, devSpeed:  5, loc:  1 },
+  { lang: 'Swift',        favorite: 40, devSpeed: 25, loc:  1 },
+  { lang: 'Golang',       favorite: 35, devSpeed: 30, loc:  1 },
+  { lang: 'Prolog',       favorite: 35, devSpeed: 10, loc:  1 },
+  { lang: 'Brainfuck',    favorite:  5, devSpeed:  0, loc:  1 },
 ];
 
 function plotGraph() {
@@ -47,12 +51,12 @@ function plotGraph() {
   var chart = svg.append('g')
     .attr('transform', translateStr(margin.left, margin.top));
 
-  // liking
+  // favorite
   var xScale = d3.scale.linear()
     .domain([0, 100])
     .range([margin.left, width - margin.right]);
 
-  // difficulty
+  // devSpeed
   var yScale = d3.scale.linear()
     .domain([0, 100])
     .range([height - margin.bottom, margin.top]);
@@ -82,8 +86,7 @@ function plotGraph() {
       .attr('x', width - margin.right)
       .attr('y', -5)
       .style('text-anchor', 'end')
-      // .text('Difficulty [%]');
-      .text('難易度 [%]');
+      .text('開発スピード [%]');
 
   // set y axis
   svg.append('g')
@@ -96,21 +99,21 @@ function plotGraph() {
       .attr('x', -10)
       .attr('y', 15)
       .style('text-anchor', 'end')
-      // .text('Liking [%]');
       .text('好み [%]');
 
   // colors
   var colors = d3.scale.category20b();
 
   // plots
-  var circles = chart.selectAll('circle')
+  var circles = svg.selectAll('circle.plot')
     .data(langs)
     .enter().append('circle')
+      .attr('class', 'plot')
       .attr('cx', function (d) {
-        return xScale(d.difficulty);
+        return xScale(d.devSpeed);
       })
       .attr('cy', function (d) {
-        return yScale(d.liking);
+        return yScale(d.favorite);
       })
       .attr('r',  function (d) {
         return rScale(d.loc);
@@ -118,20 +121,23 @@ function plotGraph() {
       .style('opacity', 0.5)
       .style('fill', function (d, i) {
         return colors(i);
-      });
+      })
 
   // labels on plots
-  var labels = chart.selectAll('text')
+  var labels = svg.selectAll('text.label')
     .data(langs)
     .enter().append('text')
+      .attr('class', 'label')
       .attr('x', function (d) {
-        return xScale(d.difficulty);
+        return xScale(d.devSpeed);
       })
       .attr('y', function (d) {
-        return yScale(d.liking);
+        return yScale(d.favorite);
       })
       .style('text-anchor', 'middle')
       .text(function (d) {
+        console.log(d.lang);
         return d.lang;
       });
+
 };
