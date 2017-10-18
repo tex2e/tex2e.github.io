@@ -136,7 +136,6 @@ function plotGraph() {
       })
       .style('text-anchor', 'middle')
       .text(function (d) {
-        console.log(d.lang);
         return d.lang;
       });
 
