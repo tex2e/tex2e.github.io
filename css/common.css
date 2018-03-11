@@ -1,14 +1,7 @@
 
-/*
-+ SMACSS -- Scalable and Modular Architecture for CSS
-+ BEM -- Block Element Module
-*/
-
 /* ------------------------------------------------ */
 /* Base */
 
-/* ---------------------------- */
-/* skrollr.js */
 * {
   padding: 0;
   margin: 0;
@@ -22,7 +15,6 @@ body {
 .skrollr-desktop body {
   height: 100% !important;
 }
-/* ---------------------------- */
 
 body {
   text-align: center;
@@ -45,7 +37,6 @@ hr {
 
 /* ------------------------------------------------ */
 /* Layout */
-/*   prefix with .l- */
 
 .layout-content {
   background: #fff;
@@ -56,8 +47,8 @@ hr {
   box-sizing: border-box;
 }
 
-/* ---------------------------- */
-/* contents of about */
+/* --- about --- */
+
 .about__profile {
   width: 300px;
   height: 300px;
@@ -71,24 +62,23 @@ hr {
   }
 }
 
-/* ---------------------------- */
-/* contents of skills */
+/* --- skills --- */
+
 .skills__item {
   height: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-/* ---------------------------- */
-/* contents of works */
+/* --- works --- */
+
 .works__item {
   height: 300px;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-/* ---------------------------- */
-/* contents of learned-lang */
+/* --- learned languages --- */
 
 #js-langs-plot {
   text-align: center;
@@ -116,8 +106,8 @@ hr {
   font-size: 13px;
 }
 
-/* ---------------------------- */
-/* contents of contact */
+/* --- contact --- */
+
 .contact__icon-list {
   display: inline-block;
 }
@@ -128,6 +118,18 @@ hr {
 
 /* ---------------------------- */
 /* icons */
+
+span.scroll-arrow {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 10px 0;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
 
 /*
   CSS Sprites Generator
@@ -186,91 +188,4 @@ hr {
 .sprite-sublime {
   width: 64px; height: 64px;
   background: url('../image/css_sprites.png') -262px -94px;
-}
-
-
-/* ------------------------------------------------ */
-/* for skrollr.js */
-
-.parallax-image-wrapper {
-  position: fixed;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-.parallax-image-wrapper-50 {
-  height: 50%;
-  top: -50%;
-}
-
-.parallax-image-wrapper-80 {
-  height: 80%;
-  top: -80%;
-}
-
-.parallax-image-wrapper-100 {
-  height: 100%;
-  top: -100%;
-}
-
-.parallax-image {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.parallax-image-50 {
-  height: 200%;
-  top: -50%;
-}
-
-.parallax-image-80 {
-  height: 160%;
-  top: -20%;
-}
-
-.parallax-image-100 {
-  height: 100%;
-  top: 0;
-}
-
-.parallax-image.skrollable-between {
-  display: block;
-}
-
-.no-skrollr .parallax-image-wrapper {
-  display: none !important;
-}
-
-#skrollr-body {
-  height: 100%;
-  overflow: visible;
-  position: relative;
-}
-
-.gap {
-  background: transparent center no-repeat;
-  background-size: cover;
-}
-
-.skrollr .gap {
-  background: transparent !important;
-}
-
-.gap-50 {
-  height: 50%;
-}
-
-.gap-80 {
-  height: 80%;
-}
-
-.gap-100 {
-  height: 100%;
 }
