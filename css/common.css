@@ -52,7 +52,7 @@ hr {
 .about__profile {
   width: 300px;
   height: 300px;
-  border: solid 1px #aaa;
+  /* border: solid 1px #aaa; */
   margin: 30px 0;
 }
 @media screen and (max-width: 480px) {

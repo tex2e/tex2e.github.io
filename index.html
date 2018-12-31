@@ -50,46 +50,46 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     We will then use data-anchor-target to display the correct image matching the current section (.gap element).
   -->
   <div
-    class="parallax-image-wrapper parallax-image-wrapper-80"
+    class="parallax-image-wrapper parallax-image-wrapper-100"
     data-anchor-target=".history + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
-      class="parallax-image parallax-image-80"
+      class="parallax-image parallax-image-100"
       style="background-image:url(image/background/background1.png)"
       data-anchor-target=".history + .gap"
-      data-bottom-top="transform: translate3d(0px, -70%, 0px);"
-      data-top-bottom="transform: translate3d(0px, 70%, 0px);"
+      data-bottom-top="transform: translate3d(0px, -60%, 0px);"
+      data-top-bottom="transform: translate3d(0px, 60%, 0px);"
     ></div>
     <!--the +/-80% translation can be adjusted to control the speed difference of the image-->
   </div>
 
   <div
-    class="parallax-image-wrapper parallax-image-wrapper-80"
-    data-anchor-target=".skills + .gap"
+    class="parallax-image-wrapper parallax-image-wrapper-100"
+    data-anchor-target=".works + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
-      class="parallax-image parallax-image-50"
+      class="parallax-image parallax-image-100"
       style="background-image:url(image/background/background2.png)"
-      data-anchor-target=".skills + .gap"
+      data-anchor-target=".works + .gap"
       data-bottom-top="transform: translate3d(0px, -60%, 0px);"
       data-top-bottom="transform: translate3d(0px, 60%, 0px);"
     ></div>
   </div>
 
   <div
-    class="parallax-image-wrapper parallax-image-wrapper-80"
-    data-anchor-target=".works + .gap"
+    class="parallax-image-wrapper parallax-image-wrapper-100"
+    data-anchor-target=".skills + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
-      class="parallax-image parallax-image-50"
+      class="parallax-image parallax-image-100"
       style="background-image:url(image/background/background3.png)"
-      data-anchor-target=".works + .gap"
+      data-anchor-target=".skills + .gap"
       data-bottom-top="transform: translate3d(0px, -60%, 0px);"
       data-top-bottom="transform: translate3d(0px, 60%, 0px);"
     ></div>
@@ -104,7 +104,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     <!-- About -->
     <div class="layout-content about">
       <h4>Welcome!</h4>
-      <img src="image/web-optim.png" alt="tex2e" class="about__profile img img-circle"/><br>
+      <img src="image/web-optim.png" alt="tex2e" class="about__profile img"/><br>
       <h3>Mako</h3>
       <h4>(tex2e)</h4>
       <br>
@@ -113,106 +113,17 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </div>
     <div class="layout-content history">
       <p class="container">
-        「怠惰のためのプログラミング」という名目でコーディングするも、保守にも怠惰が働いて長続きしないし、
-        作ったら作りっぱなしの趣味プログラマ（通称アマグラマ）です。
-        「自称Rubyist」としてRubyの布教に励んできましたが、最近はPythonにも浮気をしています。
-        ここで、Ruby vs Python みたいな話をするのは不毛な議論だし、
-        そもそもツールやプロセスを重視しすぎると問題の本質を見失ってしまうので、とやかく言いませんがどちらも大好きです。
+        ゲームとパソコンが好きだったので、高専の情報科に入学。
+        高専祭でゲームをクラスメイトと作って展示して学生会長賞を取ったり、
+        友達とRailsで夜祭入場管理＆抽選システムを作って運用されたのはいい思い出。
+        いろんなプログラミング言語を触る言語オタクになってLaTeXでプログラミングしたり、UNIX哲学に感化されてシェル芸人を目指していた時期もある。
+        本科卒業と同時に電気情報システム専攻科に入学。
+        セキュリティキャンプ全国大会2018のTLS1.3/暗号ゼミの修了生として今に至る。
       </p>
       <span class="scroll-arrow"></span>
     </div>
+
     <div class="gap gap-50" style="background-image:url(image/background/background1.png);"></div>
-    <!-- Skills -->
-    <div class="layout-content skills">
-      <h2 id="Skills">Skills</h2>
-      <p class="container">
-        プログラミング言語は多くの言語から影響されて作られた経緯があるため、幾つかの言語を同時に勉強するのが効率がいいかなと思っています。
-        もちろん勉強した全ての言語を使いこなせるという訳ではないですが、勉強した中で特に好きな言語（~=&nbsp;得意な言語）について紹介します。
-      </p>
-      <!-- Languages -->
-      <div class="row">
-        <hr>
-        <h3>Languages</h3>
-        <div class="col-sm-6 col-md-4 skills__item">
-          <i class="sprite sprite-ruby"></i>
-          <h4>Ruby</h4>
-          <p>
-            純粋なオブジェクト指向・省略できる括弧・メタプログラミングの柔軟性 の三拍子が揃っているため、最も自由度が高く、効率的にプログラムが書ける言語の1つだと思っている。
-            優秀な正規表現を持つ点もポイント。
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-4 skills__item">
-          <i class="sprite sprite-elixir"></i>
-          <h4>Elixir</h4>
-          <p>
-            Ruby風な構文で書ける関数型言語。ErlangのVM上で動く。
-            関数型言語の考え方と、Erlangのシステムと、Rubyのように扱えるオブジェクトが合わさった素晴らしい言語。
-            macroによるメタプログラミングも強力。
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-4 skills__item">
-          <i class="sprite sprite-python"></i>
-          <h4>Python</h4>
-          <p>
-            「やりかたは明確な一つの方法にすべき」という考え方が強い。ただし完全ではない。
-            お気に入りの点は、関数やクラスに対して docstring を書けるところ。
-            機械学習プログラミングのときによくお世話になっている。
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-4 col-md-offset-2 skills__item">
-          <i class="sprite sprite-c_sharp"></i>
-          <h4>C#</h4>
-          <p>
-            静的かと思えば var を使って型の推論もできる。
-            デリゲート（ラムダ式）は + 演算子を使って1つのデリゲートにすることも可能だし、
-            - 演算子を使って特定のデリゲートを削除することも可能。この時点でイベント駆動開発待った無し。
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0 skills__item">
-          <i class="sprite sprite-shell"></i>
-          <h4>Bash</h4>
-          <p>
-            様々な環境で標準で用意されている言語。
-            awk, sed, make はGNU拡張を除いて使える所謂FreeBSD派。
-            複雑なことをさせようとするとコードが途端に汚くなるので、複雑な場合は python にやらせた方が良いと思うよ。
-          </p>
-        </div>
-      </div>
-      <!-- Environment -->
-      <div class="row hidden-xs hidden-sm">
-        <hr>
-        <h3>Environment</h3>
-        <div class="col-sm-6 col-md-4 skills__item">
-          <i class="sprite sprite-atom"></i>
-          <h4>Atom</h4>
-          <p>
-            Github製のエディタ。
-            Gitリポジトリでは前のコミットとの差分が行番号の左側に表示されるので便利。
-            20万行以上あるファイルを開くと固まるのが玉に瑕。その時は Sublime Text を使っている。
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-4 skills__item">
-          <i class="sprite sprite-git"></i>
-          <h4>Git</h4>
-          <p>
-            バージョン管理システム。
-            プログラミングで失敗したときに前のバージョンに戻すことができるため、
-            これを使うことで気兼ねなくリファクタリングなどの変更を加えることができる。
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-4 skills__item">
-          <i class="sprite sprite-github"></i>
-          <h4>GitHub</h4>
-          <p>
-            Gitのバージョン管理を複数人で共有するためのWebサービス。
-            作ったコードのほとんどがGithub（それ以外はBitbucket）に上がっているため、
-            私のパソコンのHDDがぶっ壊れてもデータを失うリスクはあまりない。
-          </p>
-        </div>
-      </div>
-      <span class="scroll-arrow"></span>
-    </div>
-    <div class="gap gap-50" style="background-image:url(image/background/background2.png);"></div>
     <!-- Works -->
     <div class="layout-content works">
       <h2 id="Works">Works</h2>
@@ -437,6 +348,98 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
           </p>
         </div>
         -->
+      </div>
+      <span class="scroll-arrow"></span>
+    </div>
+
+    <div class="gap gap-50" style="background-image:url(image/background/background2.png);"></div>
+    <!-- Skills -->
+    <div class="layout-content skills">
+      <h2 id="Skills">Skills</h2>
+      <p class="container">
+        プログラミング言語は多くの言語から影響されて作られた経緯があるため、幾つかの言語を同時に勉強するのが効率がいいかなと思っています。
+        もちろん勉強した全ての言語を使いこなせるという訳ではないですが、勉強した中で特に好きな言語（~=&nbsp;得意な言語）について紹介します。
+      </p>
+      <!-- Languages -->
+      <div class="row">
+        <hr>
+        <h3>Languages</h3>
+        <div class="col-sm-6 col-md-4 skills__item">
+          <i class="sprite sprite-ruby"></i>
+          <h4>Ruby</h4>
+          <p>
+            純粋なオブジェクト指向・省略できる括弧・メタプログラミングの柔軟性 の三拍子が揃っているため、最も自由度が高く、効率的にプログラムが書ける言語の1つだと思っている。
+            優秀な正規表現を持つ点もポイント。
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-4 skills__item">
+          <i class="sprite sprite-elixir"></i>
+          <h4>Elixir</h4>
+          <p>
+            Ruby風な構文で書ける関数型言語。ErlangのVM上で動く。
+            関数型言語の考え方と、Erlangのシステムと、Rubyのように扱えるオブジェクトが合わさった素晴らしい言語。
+            macroによるメタプログラミングも強力。
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-4 skills__item">
+          <i class="sprite sprite-python"></i>
+          <h4>Python</h4>
+          <p>
+            「やりかたは明確な一つの方法にすべき」という考え方が強い。ただし完全ではない。
+            お気に入りの点は、関数やクラスに対して docstring を書けるところ。
+            機械学習プログラミングのときによくお世話になっている。
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-4 col-md-offset-2 skills__item">
+          <i class="sprite sprite-c_sharp"></i>
+          <h4>C#</h4>
+          <p>
+            静的かと思えば var を使って型の推論もできる。
+            デリゲート（ラムダ式）は + 演算子を使って1つのデリゲートにすることも可能だし、
+            - 演算子を使って特定のデリゲートを削除することも可能。この時点でイベント駆動開発待った無し。
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0 skills__item">
+          <i class="sprite sprite-shell"></i>
+          <h4>Bash</h4>
+          <p>
+            様々な環境で標準で用意されている言語。
+            awk, sed, make はGNU拡張を除いて使える所謂FreeBSD派。
+            複雑なことをさせようとするとコードが途端に汚くなるので、複雑な場合は python にやらせた方が良いと思うよ。
+          </p>
+        </div>
+      </div>
+      <!-- Environment -->
+      <div class="row hidden-xs hidden-sm">
+        <hr>
+        <h3>Environment</h3>
+        <div class="col-sm-6 col-md-4 skills__item">
+          <i class="sprite sprite-atom"></i>
+          <h4>Atom</h4>
+          <p>
+            Github製のエディタ。
+            Gitリポジトリでは前のコミットとの差分が行番号の左側に表示されるので便利。
+            20万行以上あるファイルを開くと固まるのが玉に瑕。その時は Sublime Text を使っている。
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-4 skills__item">
+          <i class="sprite sprite-git"></i>
+          <h4>Git</h4>
+          <p>
+            バージョン管理システム。
+            プログラミングで失敗したときに前のバージョンに戻すことができるため、
+            これを使うことで気兼ねなくリファクタリングなどの変更を加えることができる。
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-4 skills__item">
+          <i class="sprite sprite-github"></i>
+          <h4>GitHub</h4>
+          <p>
+            Gitのバージョン管理を複数人で共有するためのWebサービス。
+            作ったコードのほとんどがGithub（それ以外はBitbucket）に上がっているため、
+            私のパソコンのHDDがぶっ壊れてもデータを失うリスクはあまりない。
+          </p>
+        </div>
       </div>
       <span class="scroll-arrow"></span>
     </div>
