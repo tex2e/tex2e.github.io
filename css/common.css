@@ -87,6 +87,11 @@ hr {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+@media only screen and (max-width: 450px) {
+  .works__item {
+    margin-bottom: 50px;
+  }
+}
 @media only screen and (max-width: 400px) {
   .works__item {
     margin-bottom: 80px;
