@@ -7,6 +7,6 @@ $(document).ready(function() {
   // lib/skrollr.js
   skrollr.init({
     smoothScrolling: false,
-    mobileDeceleration: 0.004
+    mobileDeceleration: 1
   });
 });
