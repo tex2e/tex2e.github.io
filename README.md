@@ -1,5 +1,5 @@
 
-TeX2e.github.io
+tex2e.github.io
 ===============
 
 Page of introduce myself
