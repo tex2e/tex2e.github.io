@@ -61,6 +61,13 @@ hr {
   margin-bottom: 10ex;
 }
 
+@media screen and (max-width: 480px) {
+  .works article > img {
+    width: 100%;
+  }
+}
+
+
 /* --- skills --- */
 
 .skills-languages article,

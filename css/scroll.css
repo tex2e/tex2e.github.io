@@ -193,6 +193,14 @@ nav li {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+
+@media only screen and (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .header-container {
     overflow: hidden;
