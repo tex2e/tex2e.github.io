@@ -24,7 +24,6 @@ h2 {
 }
 
 p {
-  margin: 1em 1em;
   text-align: justify;
 }
 
@@ -58,8 +57,15 @@ hr {
 
 /* --- works --- */
 
-.works .row article {
+.works article {
   margin-bottom: 10ex;
+}
+
+/* --- skills --- */
+
+.skills-languages article,
+.skills-environment article {
+  height: 30ex;
 }
 
 /* --- learned languages --- */
