@@ -5,8 +5,8 @@ $(document).ready(function() {
   plotGraph();
 
   // lib/skrollr.js
-  skrollr.init({
-    smoothScrolling: false,
-    mobileDeceleration: 1
+  var s = skrollr.init({
+    smoothScrolling: true, //false,
+    mobileDeceleration: 0.004, //1,
   });
 });
