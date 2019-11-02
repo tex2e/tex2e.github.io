@@ -1,7 +1,4 @@
 
-/* ------------------------------------------------ */
-/* Base */
-
 * {
   padding: 0;
   margin: 0;
@@ -38,10 +35,8 @@ hr {
 /* ------------------------------------------------ */
 /* Layout */
 
-.layout-content {
-  background: #fff;
+.content-block {
   padding: 1em;
-
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -52,7 +47,6 @@ hr {
 .about__profile {
   width: 300px;
   height: 300px;
-  /* border: solid 1px #aaa; */
   margin: 30px 0;
 }
 @media screen and (max-width: 480px) {
@@ -62,45 +56,10 @@ hr {
   }
 }
 
-/* --- skills --- */
-
-.skills__item {
-  height: 200px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-@media only screen and (max-width: 400px) {
-  .skills__item {
-    margin-bottom: 40px;
-  }
-}
-@media only screen and (max-width: 350px) {
-  .skills__item {
-    margin-bottom: 60px;
-  }
-}
-
 /* --- works --- */
 
-.works__item {
-  height: 300px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-@media only screen and (max-width: 450px) {
-  .works__item {
-    margin-bottom: 50px;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .works__item {
-    margin-bottom: 80px;
-  }
-}
-@media only screen and (max-width: 350px) {
-  .works__item {
-    margin-bottom: 120px;
-  }
+.works .row article {
+  margin-bottom: 10ex;
 }
 
 /* --- learned languages --- */
@@ -133,10 +92,10 @@ hr {
 
 /* --- contact --- */
 
-.contact__icon-list {
+.contact-icon-list {
   display: inline-block;
 }
-.contact__icon-link:hover {
+.contact-icon-link:hover {
   position: relative;
   top: -5px;
 }
