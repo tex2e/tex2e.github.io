@@ -121,11 +121,6 @@ nav li {
 .fs.header-container {
   height: 60vh;
 }
-@media screen and (max-width: 480px) {
-  .fs.header-container {
-    height: 50vh;
-  }
-}
 
 .slide {
   /* color: black; */
@@ -195,49 +190,52 @@ nav li {
           transition-delay: 0.4s;
 }
 
-
-
-.header-container {
-  overflow: hidden;
-  position: relative;
-}
-.header-container .wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -120%);
-      -ms-transform: translate(-50%, -120%);
-          transform: translate(-50%, -120%);
-  margin: 0;
-  padding: 0;
-}
-.header-container:before {
-  font-size: 70em;
-}
-.bcg {
-  opacity: 1;
-}
-.slide {
-  overflow: hidden;
-  overflow-x: hidden;
-}
-.slide section {
-  max-width: 400px;
-}
-.slide .wrapper {
-  padding-top: 120px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  margin: 0;
-}
-nav {
-  display: block;
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media only screen and (min-width: 768px) {
+  .header-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .header-container .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -120%);
+        -ms-transform: translate(-50%, -120%);
+            transform: translate(-50%, -120%);
+    margin: 0;
+    padding: 0;
+  }
+  .header-container:before {
+    font-size: 70em;
+  }
+  .bcg {
+    opacity: 1;
+  }
+  .slide {
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+  .slide section {
+    max-width: 400px;
+  }
+  .slide .wrapper {
+    padding-top: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+  nav {
+    display: block;
+  }
 }
 
 /* ==========================================================================
