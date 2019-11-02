@@ -57,7 +57,7 @@ hr {
 
 /* --- works --- */
 
-.works article {
+.works .row > article {
   margin-bottom: 10ex;
 }
 
