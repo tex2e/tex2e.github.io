@@ -140,3 +140,5 @@ function plotGraph() {
       });
 
 };
+
+plotGraph();

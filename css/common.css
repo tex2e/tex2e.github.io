@@ -186,3 +186,260 @@ span.scroll-arrow {
   width: 64px; height: 64px;
   background: url('../image/css_sprites.png') -262px -94px;
 }
+
+
+
+
+/* ==========================================================================
+   ScrollMagic
+   ========================================================================== */
+
+.wrapper {
+  width: 80%;
+  margin: 0 10%;
+}
+
+/* Make the body 100% of the browser viewport height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* =Header */
+.header-container {
+  text-align: center;
+}
+.header-container .wrapper {
+  padding-top: 120px;
+  z-index: 2;
+  position: relative;
+}
+
+.bcg {
+  background: no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+/* .header-container .bcg {
+  background-image: url(../image/background/background0.jpg);
+  background-size: cover;
+} */
+#slide01 .bcg {
+  background: url(../image/background/background1.jpg) no-repeat center center;
+  background-size: cover;
+}
+#slide02 .bcg {
+  background: url(../image/background/background2.jpg) no-repeat center center;
+  background-size: cover;
+}
+#slide03 .bcg {
+  background: url(../image/background/background3.jpg) no-repeat center center;
+  background-size: cover;
+  opacity: 0.7;
+}
+
+/* =Navigation */
+nav {
+  display: none;
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: right;
+  z-index: 100;
+}
+nav a {
+  display: block;
+  line-height: 25px;
+  position: relative;
+  padding-right: 20px;
+  color: rgba(50, 50, 50, 0.9);
+  text-decoration: none;
+}
+nav a:hover,
+nav a:visited,
+nav a:active {
+  text-decoration: none;
+}
+nav a:hover .nav-label {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  color: rgba(50, 50, 50, 0.9);
+}
+nav .nav-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  background-color: rgba(50, 50, 50, 0.9);
+  border-radius: 100%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: all 0.3s linear;
+          transition: all 0.3s linear;
+}
+nav .nav-label {
+  display: block;
+  opacity: 0.5;
+  visibility: hidden;
+  -webkit-transform: translateX(-10px);
+      -ms-transform: translateX(-10px);
+          transform: translateX(-10px);
+  -webkit-transition: all 0.2s cubic-bezier(.17, .67, .83, .67);
+          transition: all 0.2s cubic-bezier(.17, .67, .83, .67);
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  width: auto;
+  list-style: none;
+}
+
+/* =Main */
+
+.fs {
+  height: 60vh; /* slide height */
+}
+.fs.header-container {
+  height: 60vh;
+}
+
+.slide {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+.slide .wrapper {
+  padding-top: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  z-index: 2;
+}
+.slide .wrapper section {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+.slide.fs .wrapper {
+  position: absolute;
+  top: 20%; /* slide text position */
+}
+
+/* =Content Block */
+.content-block {
+  text-align: center;
+}
+.content-block .wrapper {
+  padding: 10px 0;
+}
+.no-touch .content-block .wrapper {
+  visibility: hidden;
+  opacity: 0;
+}
+.no-touch .content-block.is-active .wrapper {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* =Footer */
+.footer-container {
+  text-align: center;
+  font-size: 14px;
+}
+.footer-container a {
+  color: black;
+}
+
+/* =Simple animation up */
+.no-touch .slideInUp {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.7s ease-out;
+          transition: all 0.7s ease-out;
+  -webkit-transform: translate3d(0, 50px, 0);
+  transform: translate3d(0, 50px, 0); }
+.no-touch .is-active .slideInUp {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.slideInUp.delay02s {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+.slideInUp.delay04s {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .header-container .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -120%);
+        -ms-transform: translate(-50%, -120%);
+            transform: translate(-50%, -120%);
+    margin: 0;
+    padding: 0;
+  }
+  .header-container:before {
+    font-size: 70em;
+  }
+  .bcg {
+    opacity: 1;
+  }
+  nav {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.text-white {
+  color: white;
+}
