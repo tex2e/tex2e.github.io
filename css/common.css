@@ -206,14 +206,14 @@ html, body {
 }
 
 /* =Header */
-.header-container {
+/* .header-container {
   text-align: center;
 }
 .header-container .wrapper {
   padding-top: 120px;
   z-index: 2;
   position: relative;
-}
+} */
 
 .bcg {
   background: no-repeat center center;
