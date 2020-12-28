@@ -1,2 +1,5 @@
 
+User-agent: Googlebot
+Disallow: /eprint-translater/
+
 Sitemap: https://tex2e.github.io/blog/sitemap.xml
