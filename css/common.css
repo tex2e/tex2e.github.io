@@ -67,12 +67,19 @@ hr {
   }
 }
 
-
 /* --- skills --- */
 
-.skills-languages article,
+/* .skills-languages article,
 .skills-environment article {
   height: 30ex;
+} */
+
+.mylist {
+  list-style: none;
+  text-align: left;
+}
+.mylist tr td {
+  padding: 0.5ex 1ex;
 }
 
 /* --- learned languages --- */

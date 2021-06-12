@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // get all sections
   var sections = [
-    "#section_intro", "#section_works", "#section_skills",
-    "#section_langs", "#section_environment",
+    "#section_intro",
+    "#section_works", "#section_works2",
+    "#section_skills", "#section_langs",
+    "#section_certification", "#section_activities",
     "#section_learned_langs", "#section_contact"
   ];
 
