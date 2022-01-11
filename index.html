@@ -717,6 +717,8 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
   <script src="js/lib/d3.v3.min.js"></script>
   <script src="js/langs-plot.js"></script>
 
+  <!-- Google Analytics -->
+  <!--
   <script>
     var host = window.location.hostname;
     if (host != "localhost") {
@@ -727,6 +729,16 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
       ga('create', 'UA-75892425-1', 'auto');
       ga('send', 'pageview');
     }
+  </script>
+  -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-75892425-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-75892425-1');
   </script>
 </body>
 </html>
