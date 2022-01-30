@@ -47,11 +47,21 @@ hr {
   width: 300px;
   height: 300px;
   margin: 30px 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 @media screen and (max-width: 480px) {
   .about__profile {
     width: 150px;
     height: 150px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
   }
 }
 
