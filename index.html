@@ -61,8 +61,8 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
   <article id="section_intro" class="content-block">
     <div class="container">
       <section>
-        <h4 class="title">Welcome!</h4>
         <div class="row">
+          <!-- <h4 class="title">Welcome!</h4> -->
           <div class="col-md-offset-2 col-md-4 col-sm-12">
             <img src="image/chono-mako-bg.jpg" alt="mako" class="about__profile img" onmousedown="false" />
             <h3 style="margin-top: 0;">蝶野 まこ</h3>
@@ -78,15 +78,24 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
         </div>
         <br>
         <br>
-        <div>
-          <b>フル</b>スクラッチでTLS 1.3プロトコル<b>スタック</b>を自作できる<b>エンジニア</b> (仮)
+        <div class="row">
+          <div>
+            <b>フル</b>スクラッチでTLS 1.3プロトコル<b>スタック</b>を自作できる<b>エンジニア</b> (仮)
+          </div>
         </div>
-        <br><br><br>
-
-        <p class="slideInUp">
-          暗号技術やプロトコルの仕組みやアクセス制御について、調査や技術検証するのが趣味。RFCの自動翻訳対訳サイトの管理者。セキュリティ・キャンプ全国大会2018「TLS 1.3/暗号ゼミ」参加者。セキュリティ・キャンプ全国大会2019/2020/2021チューター。Hardening Project 2021/2022 参加者
-        </p>
-        <span class="scroll-arrow"></span>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8 intro__abstract">
+            <p>
+              暗号技術やプロトコルの仕組みやアクセス制御について、調査や技術検証するのが趣味。RFCの自動翻訳対訳サイトの管理者。セキュリティ・キャンプ全国大会2018「TLS 1.3/暗号ゼミ」参加者。セキュリティ・キャンプ全国大会2019/2020/2021チューター、2022講師。Hardening Project 2021/2022 参加者
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <span class="scroll-arrow"></span>
+        </div>
       </section>
     </div>
   </article>
@@ -95,7 +104,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     <div class="bcg"></div>
   </article>
 
-  <!-- Skills -->
+  <!-- Skills 
   <article id="section_skills" class="content-block skills">
     <header>
       <h2 class="slideInUp">Skills</h2>
@@ -103,74 +112,14 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     <section>
       <div class="wrapper">
         <p class="slideInUp delay02s text-center">
-          好きなプログラミング言語や、資格、活動について
+          資格や社外活動について
         </p>
       </div>
     </section>
   </article>
-
+  
   <hr>
-
-  <!-- Languages -->
-  <article id="section_langs" class="content-block skills-languages">
-    <header>
-      <h3 class="slideInUp">Languages</h3>
-    </header>
-    <br>
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <article class="slideInUp delay02s">
-              <i class="sprite sprite-ruby"></i>
-              <h4>Ruby</h4>
-              <p>
-                全てがオブジェクト。Classクラスの親がModuleクラスで、その親がObjectクラスで、さらにその親がBasicObjectクラスで、BasicObjectのシングルトンの親クラスはClassクラスということから、クラスもオブジェクトだと気づかせる唯一の言語。
-              </p>
-            </article>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <article class="slideInUp delay02s">
-              <i class="sprite sprite-elixir"></i>
-              <h4>Elixir</h4>
-              <p>
-                Erlangの癖の強い構文をRuby風にした言語。RubyのメタプログラミングがRailsに活かされたように、Elixirのmacroによるメタプロがあれば次世代のフレームワークがやって来ると思っていたが、人類に関数型言語は早すぎたのだと思っている。
-              </p>
-            </article>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <article class="slideInUp delay02s">
-              <i class="sprite sprite-python"></i>
-              <h4>Python</h4>
-              <p>
-                Python2から3への移行に大変苦労した言語。今でもネットの海にはPython2のコードがあり、2to3で変換してみるも、ライブラリがないだの、Python2対応pipがないだの、今なお苦しめられている。頼むからPython2は安らかに眠ってください、と願って止まない。
-              </p>
-            </article>
-          </div>
-          <div class="col-sm-6 col-md-4 col-md-offset-2">
-            <article class="slideInUp delay04s">
-              <i class="sprite sprite-c_sharp"></i>
-              <h4>C#</h4>
-              <p>
-                UnityでC#を使っていたので思い入れのある言語。Windows環境ではC#が素晴らしい、のではなく .NET Framework が偉大なのだと思う。PowerShellから呼び出せる点がとてもよい。PowerShellをよりPowerfulにしている。PowerShell万歳！（C#も万歳！）
-              </p>
-            </article>
-          </div>
-          <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0">
-            <article class="slideInUp delay04s">
-              <i class="sprite sprite-shell"></i>
-              <h4>Bash</h4>
-              <p>
-                履修すべき言語No.1。Linuxといえば大抵はBash。Bashを笑う者はBashに泣く。コンソール上での自動化の最強の味方。GNU拡張の有無で時々発狂しそうになる (GNU is not Unix)。teeコマンドとtreeコマンドを打ち間違えないようにするのが最近の目標。
-              </p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-  </article>
-
-  <hr>
+  -->
 
   <!-- Certifications -->
   <article id="section_langs" class="content-block">
@@ -319,6 +268,10 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
                 <td></td>
                 <td>&nbsp;&nbsp;発表内容 : <a href="https://www.youtube.com/live/6aHQUaXZLa4?feature=share&t=3600">Team#7 ななチキ チーム発表</a> (YouTube)</td>
               </tr>
+              <tr>
+                <td>2022/12</td>
+                <td>SecuriST認定セキュアWebアプリケーション設計士トレーニング (参加)</td>
+              </tr>
             </table>
           </div>
         </div>
@@ -340,8 +293,8 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     <section>
       <div class="container">
         <p class="slideInUp delay02s text-center">
-          過去の作品や技術検証について。
-          興味・関心分野は<a href="https://tex2e.github.io/blog/">晴耕雨読 (個人ブログ)</a>をご覧ください。
+          過去作品について。
+          技術検証は<a href="https://tex2e.github.io/blog/">晴耕雨読 (ブログ)</a>をご覧ください
         </p>
       </div>
       <br><br><br>
@@ -383,28 +336,6 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
         </div>
         <div class="row">
           <article class="col-sm-6 col-md-6 slideInUp delay04s">
-            <img src="image/works/color-name.png" alt="color-name" onmousedown="false" />
-            <h4>
-              <a href="https://github.com/tex2e/color-name/">View on GitHub</a> |
-              <a href="https://tex2e.github.io/color-name/">Visit Website</a>
-            </h4>
-            <p>
-              「色の名は。」は HTML5 で追加された Input Color を使って色を選択し、その色に最も近い色のトップ10の名前を表示する。まだ会ったことのない色を、探しているあなたのために。ブラウザやOSの環境によって Input Color の挙動が異なるので、PC の Firefox からアクセスして遊ぶのがオススメです。使用環境は JavaScript
-            </p>
-          </article>
-          <article class="col-sm-6 col-md-6 slideInUp delay04s">
-            <img src="image/works/puzzdemic.png" alt="puzzdemic" onmousedown="false" />
-            <h4>
-              <a href="https://github.com/13J-Programmers/5J-game">View on GitHub</a> |
-              <a href="https://13j-programmers.github.io/5J-game/">Visit Website</a>
-            </h4>
-            <p>
-              「Puzzdemic」は高専5年生の高専祭（工嶺祭）のクラス企画で展示した、パズルでワクチンを作って世界を救うゲーム。2048というパズルゲームにPandemic (ボードゲーム) の協力型プレイとパンデミック要素を加えたもの。産業フェアの長野高専のブースの展示にも使われた。最新のChrome推奨。キーボードで遊ぶときはWASDと矢印キーを使ってください。使用環境は JavaScript + D3 + イベント駆動
-            </p>
-          </article>
-        </div>
-        <div class="row">
-          <article class="col-sm-6 col-md-6 slideInUp delay04s">
             <img src="image/works/yorusai-entrance.png" alt="yorusai-entrance" onmousedown="false" />
             <h4>
               <a href="https://github.com/13J-Programmers/yorusai-entrance">View on GitHub</a>
@@ -425,35 +356,6 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
         </div>
         <div class="row">
           <article class="col-sm-6 col-md-6 slideInUp delay04s">
-            <img src="image/works/word-roots.png" alt="word-roots" onmousedown="false" />
-            <h4>
-              <a href="https://github.com/tex2e/word-roots/">View on GitHub</a>
-            </h4>
-            <p>
-              「word-roots」は英単語の語源を調べるためのコマンド。例えば colloquium（研究会）という単語を見たときに語源 loqu（話す）を発見するのは結構難しいので、それならプログラムで調べようと思って作ったもの。単語によっては間違った語源を抽出してしまうので悪しからず。ツリー構造の様に表示するのはtreeコマンドを自作したとき以来のこだわり。使用環境は Python
-            </p>
-          </article>
-          <article class="col-sm-6 col-md-6 slideInUp delay04s">
-            <img src="image/works/latex2pptx.png" alt="latex2pptx" onmousedown="false" />
-            <h4>
-              <a href="https://github.com/tex2e/latex2pptx/">View on GitHub</a>
-            </h4>
-            <p>
-              「latex2pptx」は LaTeX によって作られた PDF スライドと、テキストファイルに書いたノートから、パワーポイントを作成するためのコマンド及び環境のこと。卒業研究発表会ではこれを使って発表に臨んだ。作成した理由は主に、TikZで書いた図をスライドの方でも使い回したかったのと、数式を示す必要があったからである。使用環境は Python + python-pptx + ImageMagick + LaTeX Beamer
-            </p>
-          </article>
-        </div>
-        <div class="row">
-          <article class="col-sm-6 col-md-6 slideInUp delay04s">
-            <img src="image/works/lifegame.png" alt="lifegame" onmousedown="false" />
-            <h4>
-              <a href="https://github.com/tex2e/lifegame/">View on GitHub</a>
-            </h4>
-            <p>
-              「Lifegame」は私が知っている言語でライフゲームを実装したものを集めたレポジトリ。何種類の言語を使えるかを説明するために作っていたが、LaTeXでライフゲームを作ったあたりで既に満足してしまっている。使用言語は c, java, lisp, python, ruby, js, go, perl, php, scala, erlang, elixir, c#, f#, swift, verilog, bash, awk, latex, ...
-            </p>
-          </article>
-          <article class="col-sm-6 col-md-6 slideInUp delay04s">
             <img src="image/works/auto-sushiDA.png" alt="auto-sushiDA" onmousedown="false" />
             <h4>
               <a href="https://tex2e.github.io/blog/python/auto-SushiDA">View on Blog</a>
@@ -462,8 +364,6 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
               「Auto-SushiDA」はGUIオートメーションと画像認識と光学文字認識で、タイピングゲーム「寿司打」を自動化したもの。自動化によって聞こえるサウンドエフェクトはとてもリズミカルで心地良い。99皿以上食べるとカウントが00皿に戻るが、スコアには反映されている。使用環境は Python + PyAutoGUI + PyOCR + Tesseract
             </p>
           </article>
-        </div>
-        <div class="row">
           <article class="col-sm-6 col-md-6 slideInUp delay04s">
             <img src="image/works/rfc-translater.png" alt="rfc-translater" onmousedown="false" />
             <h4>
@@ -472,16 +372,6 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             </h4>
             <p>
               「RFC Translater」はRFCを翻訳するためのツール群と、それによって翻訳したRFCのサイトのこと。原文と翻訳文を並べて読みたいのと、RFCの本文は改行されていて改行を除去した上でGoogle翻訳に渡さないと適切な訳が得られない煩わしさを解決するために作成した。使用環境は Python + Selenium など
-            </p>
-          </article>
-          <article class="col-sm-6 col-md-6 slideInUp delay04s">
-            <img src="image/works/ahkmanager.png" alt="AHKManager" onmousedown="false" />
-            <h4>
-              <a href="https://github.com/tex2e/AHKManager/">View on GitHub</a>
-            </h4>
-            <p>
-              「AHK
-              Manager」は作業の一部を自動化するために作成したツール。特定の作業（データ入力やテストなど）をするときだけAHKのショートカットを有効にできて、AHKファイルを修正しないでショートカットの割り当てを変更できればいいな、という訳で自分のために作ったもの。使用環境は AutoHotkey
             </p>
           </article>
         </div>
@@ -526,84 +416,84 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
             <table class="mylist slideInUp delay02s">
               <tr>
                 <td>技術系ブログ (Jekyll + GitHub Pages)</td>
-                <td><a href="https://github.com/tex2e/blog">晴耕雨読 (Web)</a></td>
+                <td><a href="https://github.com/tex2e/blog">Website</a></td>
               </tr>
               <tr>
                 <td>二次方程式の解計算ツール</td>
-                <td><a href="https://tex2e.github.io/quadratic-formula/">quadratic-formula (Web)</a> | <a
+                <td><a href="https://tex2e.github.io/quadratic-formula/">Website</a> | <a
                   href="https://github.com/tex2e/quadratic-formula/">GitHub</a>
               </tr>
               <tr>
                 <td>サトクリフの五角形 描画ツール</td>
-                <td><a href="https://tex2e.github.io/p5js-pentagon/">Sutcliffe Pentagons (Web)</a> | <a href="https://github.com/tex2e/p5js-pentagon/">GitHub</a></td>
+                <td><a href="https://tex2e.github.io/p5js-pentagon/">Website</a> | <a href="https://github.com/tex2e/p5js-pentagon/">GitHub</a></td>
               </tr>
               <tr>
                 <td>長野市の保育園の一覧 (Google Mapの練習, 2015年)</td>
-                <td><a href="https://tex2e.github.io/nagano-open-data/">Nagano Open Data (Web)</a> | <a href="https://github.com/tex2e/nagano-open-data/">GitHub</a></td>
+                <td><a href="https://tex2e.github.io/nagano-open-data/">Website</a> | <a href="https://github.com/tex2e/nagano-open-data/">GitHub</a></td>
               </tr>
               <tr>
                 <td>コード内コメント検索サイト</td>
-                <td><a href="https://tex2e.github.io/search-comments/">Search Comments (Web)</a> | <a href="https://github.com/tex2e/search-comments/">GitHub</a></td>
+                <td><a href="https://tex2e.github.io/search-comments/">Website</a> | <a href="https://github.com/tex2e/search-comments/">GitHub</a></td>
               </tr>
               <tr>
                 <td>ブラウザでテキストエディタ</td>
-                <td><a href="https://tex2e.github.io/browser-editor/">BrowserEditor (Web)</a> | <a href="https://github.com/tex2e/browser-editor/">GitHub</a></td>
+                <td><a href="https://tex2e.github.io/browser-editor/">Website</a> | <a href="https://github.com/tex2e/browser-editor/">GitHub</a></td>
               </tr>
               <tr>
                 <td>英和和英辞典として使えるアプリ (Electron + AngularJS)</td>
-                <td><a href="https://github.com/tex2e/ejjedict/">ejjedict (GitHub)</a></td>
+                <td><a href="https://github.com/tex2e/ejjedict/">GitHub</a></td>
               </tr>
               <tr>
                 <td>LaTeX 文章の構造を解析し、JSON 形式に変換するプログラム</td>
-                <td><a href="https://github.com/tex2e/yalp/">yalp (GitHub)</a></td>
+                <td><a href="https://github.com/tex2e/yalp/">GitHub</a></td>
               </tr>
               <tr>
                 <td>ターミナル版 六目並べ（コネクト6）</td>
-                <td><a href="https://github.com/tex2e/rokumoku/">Rokumoku (GitHub)</a></td>
+                <td><a href="https://github.com/tex2e/rokumoku/">GitHub</a></td>
               </tr>
               <tr>
-                <td>高専3年のときに多倍長演算の授業で作成したプログラム群</td>
-                <td><a href="https://github.com/tex2e/multiple-precision/">Integer (GitHub)</a></td>
+                <td>多倍長演算の授業で作成したプログラム群</td>
+                <td><a href="https://github.com/tex2e/multiple-precision/">GitHub</a></td>
               </tr>
               <tr>
                 <td>レポート提出時のLaTeXの構造や内容をチェックするツール</td>
-                <td><a href="https://github.com/tex2e/latex-test">latex-test (GitHub)</a></td>
+                <td><a href="https://github.com/tex2e/latex-test">GitHub</a></td>
               </tr>
               <tr>
                 <td>MeCabのElixir向けバインディング</td>
-                <td><a href="https://github.com/tex2e/mecab-elixir">mecab-elixir (GitHub)</a></td>
+                <td><a href="https://github.com/tex2e/mecab-elixir">GitHub</a></td>
               </tr>
               <tr>
                 <td>MacOS向け改良(改造)版のStegsolve</td>
-                <td><a href="https://github.com/tex2e/stegsolve-macos">stegsolve-macos (GitHub)</a>
+                <td><a href="https://github.com/tex2e/stegsolve-macos">GitHub</a>
               </tr>
               <tr>
                 <td>マルコフ連鎖による文章の自動生成</td>
                 <td><a
-                  href="https://github.com/tex2e/markov-chain-sentence-generator">markov-chain-sentence-generator (GitHub)</a>
+                  href="https://github.com/tex2e/markov-chain-sentence-generator">GitHub</a>
               </tr>
               <tr>
                 <td>OpenCVでサイゼリアの間違い探しを解くツール</td>
                 <td><a
-                  href="https://github.com/tex2e/saizeriya-spot-the-difference">saizeriya-spot-the-difference (GitHub)</a>
+                  href="https://github.com/tex2e/saizeriya-spot-the-difference">GitHub</a>
               </tr>
               <tr>
                 <td>研究室の自動開錠システムに関するプログラム群</td>
-                <td><a href="https://github.com/fjt-lab/auto-door-unlock">auto-door-unlock (GitHub)</a> | <a
+                <td><a href="https://github.com/fjt-lab/auto-door-unlock">GitHub</a> | <a
                   href="https://tex2e.github.io/blog/python/auto-door-unlock">解説記事</a>
               </tr>
               <tr>
                 <td>TLS 1.3のPython実装 (鍵共有とパケット暗号化のみ)</td>
-                <td><a href="https://github.com/tex2e/mako-tls13">mako-tls13 (GitHub)</a>
+                <td><a href="https://github.com/tex2e/mako-tls13">GitHub</a>
               </tr>
               <tr>
                 <td>楕円曲線のCurve25519とCurve448を使ったDiffie-Hellman鍵交換のPython実装</td>
                 <td><a
-                  href="https://github.com/tex2e/elliptic-curves">elliptic-curves (GitHub)</a>
+                  href="https://github.com/tex2e/elliptic-curves">GitHub</a>
               </tr>
               <tr>
                 <td>AEAD暗号のChaCha20-Poly1305のPython実装</td>
-                <td><a href="https://github.com/tex2e/chacha20-poly1305">chacha20-poly1305 (GitHub)</a> | <a
+                <td><a href="https://github.com/tex2e/chacha20-poly1305">GitHub</a> | <a
                   href="https://tex2e.github.io/blog/crypto/chacha20poly1305">解説記事</a>
               </tr>
               <tr>
@@ -617,7 +507,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
               </tr>
               <tr>
                 <td>ルービックキューブを使った暗号系のPython実装</td>
-                <td><a href="https://github.com/tex2e/rubiks-crypto-cube">Rubik's-Crypto-Cube (GitHub)</a>
+                <td><a href="https://github.com/tex2e/rubiks-crypto-cube">GitHub</a>
               </tr>
               <tr>
                 <td>WPA3の技術調査とProVerifによるWPA3プロトコルの検証</td>
@@ -626,7 +516,7 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
               </tr>
               <tr>
                 <td>C言語によるAESの実装とMixColumnsの解説</td>
-                <td><a href="https://github.com/tex2e/AES">AES実装</a> | <a
+                <td><a href="https://github.com/tex2e/AES">GitHub</a> | <a
                   href="https://tex2e.github.io/blog/crypto/aes-mix-columns">MixColumns解説記事</a>
               </tr>
               <tr>
@@ -639,34 +529,50 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
                   href="https://tex2e.github.io/blog/crypto/homomorphic-tallying-with-paillier">Paillier暗号と電子投票の解説記事</a>
               </tr>
               <tr>
-                <td>WebAssemblyでC言語で実装したAES暗号を動かす</td>
-                <td><a href="https://github.com/tex2e/webassembly-aes">webassembly-aes (GitHub)</a>
+                <td>WebAssemblyでC言語で実装したAES暗号を動かすサンプル</td>
+                <td><a href="https://github.com/tex2e/webassembly-aes">GitHub</a>
               </tr>
               <tr>
                 <td>数字認識モデルと数独ソルバーを組み合わせたツール</td>
                 <td><a
-                  href="https://github.com/tex2e/sudoku-solver-with-opencv">sudoku-solver-with-opencv (GitHub)</a>
+                  href="https://github.com/tex2e/sudoku-solver-with-opencv">GitHub</a>
               </tr>
               <tr>
                 <td>ユーザ認証付きチャット (WebSocket + OAuth 2.0 + Golang)</td>
                 <td><a
-                  href="https://github.com/tex2e/testserver-oauth2">test-server-oauth2 (GitHub)</a>
-              </tr>
-              <tr>
-                <td>過去問道場のサイトで広告ブロック検知を回避しつつ広告を非表示にするChrome拡張</td>
-                <td>my-ad-blocker (非公開)</td>
-              </tr>
-              <tr>
-                <td>RFCからASCIIアート図を集めたサイト</td>
-                <td><a href="https://tex2e.github.io/rfc-translater/figs/html/index.html">RFC Figures (Web)</a></td>
+                  href="https://github.com/tex2e/testserver-oauth2">GitHub</a>
               </tr>
               <tr>
                 <td>マイナンバーカードとAPDUで通信して署名データ作成</td>
                 <td><a href="https://tex2e.github.io/blog/protocol/jpki-mynumbercard-with-apdu">解説記事</a></td>
               </tr>
               <tr>
-                <td>audit.log のログのUNIX時間を整形するツール</td>
-                <td><a href="https://tex2e.github.io/unixtime2datetime/">Unixtime2Datetime (Web)</a> | <a href="https://github.com/tex2e/unixtime2datetime">GitHub</a></td>
+                <td>「Unixtime2Datetime」audit.log のログのUNIX時間を整形するツール</td>
+                <td><a href="https://tex2e.github.io/unixtime2datetime/">Website</a> | <a href="https://github.com/tex2e/unixtime2datetime">GitHub</a></td>
+              </tr>
+              <tr>
+                <td>色の名は。</td>
+                <td><a href="https://tex2e.github.io/color-name/">Website</a> | <a href="https://github.com/tex2e/color-name/">GitHub</a></td>
+              </tr>
+              <tr>
+                <td>「Puzzdemic」高専5年生の高専祭（工嶺祭）のクラス企画</td>
+                <td><a href="https://13j-programmers.github.io/5J-game/">Website</a> | <a href="https://github.com/13J-Programmers/5J-game">GitHub</a></td>
+              </tr>
+              <tr>
+                <td>「word-roots」英単語の語源を調べるためのコマンド</td>
+                <td><a href="https://github.com/tex2e/word-roots/">GitHub</a></td>
+              </tr>
+              <tr>
+                <td>「latex2pptx」</td>
+                <td><a href="https://github.com/tex2e/latex2pptx/">GitHub</a></td>
+              </tr>
+              <tr>
+                <td>「Lifegame」（各種言語による実装集）</td>
+                <td><a href="https://github.com/tex2e/lifegame/">GitHub</a></td>
+              </tr>
+              <tr>
+                <td>「AHK Manager」作業の一部を自動化するために作成したツール</td>
+                <td><a href="https://github.com/tex2e/AHKManager/">GitHub</a></td>
               </tr>
               <tr>
                 <td></td>
@@ -681,11 +587,68 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
     </section>
   </article>
 
-  <!--
   <article id="slide03" class="slide fs">
     <div class="bcg"></div>
   </article>
-  -->
+
+  <!-- Languages -->
+  <article id="section_langs" class="content-block skills-languages">
+    <header>
+      <h3 class="slideInUp">Languages</h3>
+    </header>
+    <br>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <article class="slideInUp delay02s">
+              <i class="sprite sprite-ruby"></i>
+              <h4>Ruby</h4>
+              <p>
+                全てがオブジェクト。Classクラスの親がModuleクラスで、その親がObjectクラスで、さらにその親がBasicObjectクラスで、BasicObjectのシングルトンの親クラスはClassクラスということから、クラスもオブジェクトだと気づかせる唯一の言語。
+              </p>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <article class="slideInUp delay02s">
+              <i class="sprite sprite-elixir"></i>
+              <h4>Elixir</h4>
+              <p>
+                Erlangの癖の強い構文をRuby風にした言語。RubyのメタプログラミングがRailsに活かされたように、Elixirのmacroによるメタプロがあれば次世代のフレームワークがやって来ると思っていたが、人類に関数型言語は早すぎたのだと思っている。
+              </p>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <article class="slideInUp delay02s">
+              <i class="sprite sprite-python"></i>
+              <h4>Python</h4>
+              <p>
+                Python2から3への移行に大変苦労した言語。今でもネットの海にはPython2のコードがあり、2to3で変換してみるも、ライブラリがないだの、Python2対応pipがないだの、今なお苦しめられている。頼むからPython2は安らかに眠ってください、と願って止まない。
+              </p>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-4 col-md-offset-2">
+            <article class="slideInUp delay04s">
+              <i class="sprite sprite-c_sharp"></i>
+              <h4>C#</h4>
+              <p>
+                UnityでC#を使っていたので思い入れのある言語。Windows環境ではC#が素晴らしい、のではなく .NET Framework が偉大なのだと思う。PowerShellから呼び出せる点がとてもよい。PowerShellをよりPowerfulにしている。PowerShell万歳！（C#も万歳！）
+              </p>
+            </article>
+          </div>
+          <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0">
+            <article class="slideInUp delay04s">
+              <i class="sprite sprite-shell"></i>
+              <h4>Bash</h4>
+              <p>
+                履修すべき言語No.1。Linuxといえば大抵はBash。Bashを笑う者はBashに泣く。コンソール上での自動化の最強の味方。GNU拡張の有無で時々発狂しそうになる (GNU is not Unix)。teeコマンドとtreeコマンドを打ち間違えないようにするのが最近の目標。
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
 
   <!-- Learned Languages -->
   <!--

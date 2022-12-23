@@ -52,6 +52,7 @@ hr {
   -ms-user-select: none;
   user-select: none;
   pointer-events: none;
+  border-radius: 1em;
 }
 @media screen and (max-width: 480px) {
   .about__profile {
@@ -62,6 +63,7 @@ hr {
     -ms-user-select: none;
     user-select: none;
     pointer-events: none;
+    border-radius: 1em;
   }
 }
 
