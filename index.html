@@ -27,7 +27,11 @@ ______888____Y8888_d88P___Y88b_888888888____Y8888___
   <meta property="og:description" content="Mako(@tex2e)の自己紹介ページ" />
   <meta property="og:image" content="https://tex2e.github.io/image/chono-mako-bg.jpg" />
 
-  <link rel="icon" href="image/chono-mako-bg.ico" sizes="any">
+  <!-- 1. 最優先されるモダンフォーマット（SVG） -->
+  <link rel="icon" href="image/chono-mako-bg.svg" type="image/svg+xml">
+  <!-- 2. SVGをサポートしない環境向けのフォールバック（PNG） -->
+  <link rel="icon" href="image/chono-mako-bg-192.png" sizes="192x192">
+
   <link rel="stylesheet" href="css/normalize.css" charset="utf-8">
   <link rel="stylesheet" href="css/bootstrap.min.css" charset="utf-8">
   <link rel="stylesheet" href="css/common.css" charset="utf-8">
