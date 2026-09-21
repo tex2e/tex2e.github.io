@@ -1,108 +1,222 @@
 (() => {
   'use strict';
+  // History anchors work even if Canvas is unavailable.
+  function openHash() {
+    const target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    const detail = target.closest('details');
+    if (detail) detail.open = true;
+    if (target.id === 'activity-history') {
+      const next = target.querySelector('details');
+      if (next) next.open = true;
+    }
+  }
+  addEventListener('hashchange', openHash); openHash();
+  const canvas = document.getElementById('field-canvas');
+  const ctx = canvas?.getContext('2d', { alpha: false });
+  if (!ctx) return;
+  const journey = document.querySelector('.evolution-journey');
+  const stage = document.querySelector('.evolution-stage');
+  const toggle = document.getElementById('evolution-motion');
+  const oceanToggle = document.getElementById('ocean-motion');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const compact = matchMedia('(max-width: 760px), (max-height: 650px)');
-  const field = document.getElementById('field-canvas');
-  const fieldContext = field.getContext('2d');
-  if (!fieldContext) return;
-  document.documentElement.classList.add('canvas-ready');
-  const chapters = [...document.querySelectorAll('.chapter')];
-  const labels = ['RANDOMNESS', 'CRYPTOGRAPHY', 'PROTOCOLS'];
-  const captions = ['A LITTLE UNPREDICTABLE.', 'A SECRET, TRANSFORMED.', 'A SHARED SET OF RULES.'];
-  const colors = ['#9ce7dc', '#e0c48a', '#8ccbeb'];
-  let sceneTime = 0, motionPaused = reduced.matches;
-  document.addEventListener('oceanframe', event => {
-    sceneTime = event.detail.time; motionPaused = event.detail.paused;
-    if (visible(field) || [...document.querySelectorAll('[data-static-scene]')].some(visible)) queue();
+  const atlas = document.createElement('canvas');
+  const ink = atlas.getContext('2d');
+  if (!ink) return;
+  const titles = ['RANDOMNESS', 'CRYPTOGRAPHY', 'PROTOCOLS'];
+  const colors = ['#8df0cf', '#f1cf8c', '#91cfff'];
+  const names = [
+    ['ENTROPY', 'TRNG', 'CSPRNG', 'DRBG', 'SEED', 'SAMPLING'],
+    ['HASH', 'SYMMETRIC KEY', 'PUBLIC KEY', 'POST-QUANTUM', 'ZERO-KNOWLEDGE', 'SIGNATURE'],
+    ['TLS 1.3', 'SSH', 'QUIC', 'IPsec', 'KEY EXCHANGE', 'AUTHENTICATION']
+  ];
+  let w = 0, h = 0, viewH = 0, worldH = 0, dpr = 1, mobile = false;
+  let paths = [], leaves = [], labels = [], queued = false, inView = false;
+  let time = 0, paused = reduced.matches, lastScene = -1;
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  let seed = 20260921;
+  function random() { seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5; return (seed >>> 0) / 4294967296; }
+  function trunk(y) { return w * (mobile ? .5 : .65) + Math.sin(y / h * 3.6) * w * (mobile ? .055 : .035); }
+  function point(path, t) {
+    const s = 1 - t;
+    return { x: s*s*s*path.x + 3*s*s*t*path.cx + 3*s*t*t*path.dx + t*t*t*path.ex,
+      y: s*s*s*path.y + 3*s*s*t*path.cy + 3*s*t*t*path.dy + t*t*t*path.ey };
+  }
+  function trace(p) { ink.moveTo(p.x, p.y); ink.bezierCurveTo(p.cx, p.cy, p.dx, p.dy, p.ex, p.ey); }
+  function branch(x, y, angle, length, depth, scene) {
+    const ex = clamp(x + Math.cos(angle) * length, w * .025, w * .97);
+    const ey = y + Math.sin(angle) * length;
+    const bend = scene === 0 ? length * .32 : scene === 1 ? 0 : length * -.24;
+    const p = { x, y, cx: x + (ex-x)*.35 - Math.sin(angle)*bend,
+      cy: y + (ey-y)*.35 + Math.cos(angle)*bend,
+      dx: x + (ex-x)*.75, dy: y + (ey-y)*.75, ex, ey, depth, scene, phase: random() };
+    paths.push(p);
+    if (depth === 0) { leaves.push({x:ex, y:ey, scene, phase:random()}); return; }
+    const spread = scene === 1 ? .53 : .3 + random() * .38;
+    for (const direction of [-1, 1]) {
+      branch(ex, ey, angle + direction * spread + (random()-.5)*.18,
+        length * (.61 + random()*.13), depth-1, scene);
+    }
+  }
+  function build() {
+    seed = 20260921; paths = []; leaves = []; labels = [];
+    for (let scene = 0; scene < 3; scene++) {
+      for (let i = 0; i < 6; i++) {
+        const side = i % 2 ? 1 : -1;
+        const y = h * (scene + (mobile ? .48 : .23) + Math.floor(i/2) * (mobile ? .14 : .23));
+        const angle = side === 1 ? -.36 : Math.PI + .36;
+        const length = w * (mobile ? .17 : .095) * (.9 + random()*.2);
+        const rootIndex = paths.length;
+        branch(trunk(y), y, angle, length, mobile ? 5 : 6, scene);
+        const root = paths[rootIndex];
+        labels.push({x:root.ex + side * (mobile ? 8 : 18), y:root.ey + (i % 2 ? 20 : -20), side, scene, text:names[scene][i]});
+      }
+    }
+    ink.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ink.fillStyle = '#030f1b'; ink.fillRect(0, 0, w, worldH);
+    // Each biome has a different atmosphere; the geometry belongs to one world space.
+    for (let scene = 0; scene < 3; scene++) {
+      const y = (scene + .55) * h, x = trunk(y);
+      const halo = ink.createRadialGradient(x, y, 0, x, y, Math.max(w*.43, h*.5));
+      halo.addColorStop(0, [ '#103b35', '#332e23', '#132d48' ][scene]);
+      halo.addColorStop(1, '#030f1b00');
+      ink.fillStyle = halo; ink.fillRect(0, 0, w, worldH);
+      ink.strokeStyle = colors[scene] + '0d'; ink.lineWidth = .7;
+      for (let ring=0; ring<7; ring++) {
+        ink.beginPath(); ink.ellipse(x,y,w*(.12+ring*.035),h*(.19+ring*.035),-.3,0,Math.PI*2); ink.stroke();
+      }
+      for (let i = 0; i < 180; i++) {
+        ink.fillStyle = colors[scene] + (i%5 ? '30' : '75');
+        ink.fillRect(random()*w, (scene+random())*h, random()*1.5+.3, 1);
+      }
+    }
+    // Render the expensive topology once. Animation only moves light along its paths.
+    for (const p of paths) {
+      ink.beginPath(); trace(p);
+      ink.strokeStyle = colors[p.scene] + (p.depth > 3 ? 'a0' : p.depth > 1 ? '60' : '35');
+      ink.lineWidth = .35 + p.depth * .24; ink.stroke();
+      if (p.depth > 3) {
+        ink.strokeStyle = colors[p.scene] + '0c'; ink.lineWidth = 7; ink.stroke();
+      }
+    }
+    for (const leaf of leaves) {
+      const {x,y,scene} = leaf;
+      ink.strokeStyle = colors[scene] + '65'; ink.fillStyle = colors[scene] + '90';
+      if (scene === 0) {
+        ink.beginPath(); ink.arc(x,y, .7 + leaf.phase*1.8,0,Math.PI*2); ink.fill();
+        if (leaf.phase>.88) { ink.beginPath();ink.arc(x,y,5,0,Math.PI*2);ink.lineWidth=.5;ink.stroke(); }
+      } else if (scene === 1) {
+        const r=2+leaf.phase*3; ink.beginPath();ink.moveTo(x,y-r);ink.lineTo(x+r*.6,y);ink.lineTo(x,y+r);ink.lineTo(x-r*.6,y);ink.closePath();ink.lineWidth=.6;ink.stroke();
+      } else {
+        ink.fillRect(x-1,y-1,2,2);
+        if (leaf.phase>.75) {
+          ink.beginPath();ink.arc(x,y,4,0,Math.PI*2);ink.lineWidth=.6;ink.stroke();
+        }
+      }
+    }
+    // Protocol branches acquire lateral links, turning a tree into a communicating network.
+    const endpoints = leaves.filter(p=>p.scene===2);
+    ink.strokeStyle = '#91cfff24'; ink.lineWidth = .6;
+    for (let i=0;i<endpoints.length;i+=5) {
+      const a=endpoints[i], b=endpoints[(i+39)%endpoints.length];
+      if (Math.hypot(a.x-b.x,a.y-b.y)>w*.23) continue;
+      ink.beginPath();ink.moveTo(a.x,a.y);ink.quadraticCurveTo((a.x+b.x)/2,(a.y+b.y)/2-25,b.x,b.y);ink.stroke();
+    }
+    const gradient=ink.createLinearGradient(0,0,0,worldH);
+    colors.forEach((c,i)=>gradient.addColorStop((i+.5)/3,c));
+    // An uninterrupted bundle: all six primary branches in every world attach to it.
+    for (let strand=-3;strand<=3;strand++) {
+      ink.beginPath();
+      for (let y=0;y<=worldH;y+=3) {
+        const x=trunk(y)+strand*2.5+Math.sin(y*.012+strand)*3;
+        y ? ink.lineTo(x,y) : ink.moveTo(x,y);
+      }
+      ink.strokeStyle=gradient;ink.globalAlpha=strand===0?.95:.25;ink.lineWidth=strand===0?2:1;ink.stroke();
+    }
+    ink.globalAlpha=1;
+    // Keep chapter copy calm without masking the shared trunk.
+    if (!mobile) {
+      const shade=ink.createLinearGradient(0,0,w*.48,0);
+      shade.addColorStop(0,'#030f1bf8');shade.addColorStop(.7,'#030f1be0');shade.addColorStop(1,'#030f1b00');
+      ink.fillStyle=shade;ink.fillRect(0,0,w,worldH);
+    }
+    if (mobile) {
+      for (let scene=0;scene<3;scene++) {
+        const top=scene*h;
+        const shade=ink.createLinearGradient(0,top,0,top+h*.5);
+        shade.addColorStop(0,'#030f1bf5');shade.addColorStop(.75,'#030f1be8');shade.addColorStop(1,'#030f1b00');
+        ink.fillStyle=shade;ink.fillRect(0,top,w,h*.5);
+      }
+    }
+    for (const label of labels) {
+      ink.font=`${mobile?7:9}px ui-monospace, monospace`;
+      const tw=ink.measureText(label.text).width;
+      let x=label.side<0?label.x-tw:label.x;
+      x=clamp(x,12,w-tw-12);
+      ink.fillStyle='#030f1bd9';ink.fillRect(x-5,label.y-11,tw+10,17);
+      ink.fillStyle=colors[label.scene];ink.fillText(label.text,x,label.y);
+    }
+    document.documentElement.classList.add('evolution-ready');
+  }
+  function resize() {
+    const rect=stage.getBoundingClientRect();
+    const nextW=Math.round(rect.width), nextH=Math.round(rect.height);
+    if (!nextW||!nextH) return;
+    const nextDpr=Math.min(devicePixelRatio||1,1.5);
+    if(w===nextW&&viewH===nextH&&dpr===nextDpr)return;
+    w=nextW;viewH=nextH;mobile=w<=760;h=Math.max(viewH,mobile?900:700);worldH=h*3;dpr=nextDpr;
+    canvas.width=Math.round(w*dpr);canvas.height=Math.round(viewH*dpr);
+    atlas.width=canvas.width;atlas.height=Math.round(worldH*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);build();queue();
+  }
+  function render() {
+    queued=false;
+    if(document.hidden||!inView||!w)return;
+    const rect=journey.getBoundingClientRect();
+    const progress=clamp(-rect.top/Math.max(1,rect.height-viewH));
+    const camera=progress*(worldH-viewH);
+    ctx.drawImage(atlas,0,camera*dpr,atlas.width,viewH*dpr,0,0,w,viewH);
+    const scene=Math.min(2,Math.floor((camera+viewH*.5)/h));
+    if(scene!==lastScene){
+      document.getElementById('field-number').textContent=`0${scene+1}`;
+      document.getElementById('field-label').textContent=titles[scene];lastScene=scene;
+      stage.style.setProperty('--world-color',colors[scene]);
+    }
+    ctx.globalCompositeOperation='lighter';
+    // A continuous pulse follows the trunk through all three habitats.
+    for(let i=0;i<28;i++) {
+      const y=((i/28*worldH+time*37)%worldH);
+      if(y<camera-20||y>camera+viewH+20)continue;
+      ctx.globalAlpha=mobile?clamp(((y%h)/h-.35)/.15):1;
+      const col=colors[Math.min(2,Math.floor(y/h))];
+      ctx.strokeStyle=col;ctx.lineWidth=1.6;ctx.beginPath();
+      for(let j=0;j<18;j++){const py=y-j;j?ctx.lineTo(trunk(py),py-camera):ctx.moveTo(trunk(py),py-camera);}ctx.stroke();
+      ctx.fillStyle=col;ctx.beginPath();ctx.arc(trunk(y),y-camera,2,0,Math.PI*2);ctx.fill();
+    }
+    for(let i=0;i<paths.length;i+=mobile?7:9){
+      const p=paths[i];if(Math.max(p.y,p.ey)<camera-60||Math.min(p.y,p.ey)>camera+viewH+60)continue;
+      const pos=point(p,(p.phase+time*(p.scene===2?.15:.075))%1);
+      ctx.fillStyle=colors[p.scene];ctx.globalAlpha=(.4+p.depth*.08)*(mobile?clamp(((pos.y%h)/h-.35)/.15):1);
+      ctx.fillRect(pos.x,pos.y-camera,1.3,1.3);
+    }
+    ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
+  }
+  function queue(){if(!queued&&!document.hidden&&inView){queued=true;requestAnimationFrame(render);}}
+  function syncButton(){toggle.hidden=reduced.matches;toggle.textContent=paused?'動きを再開する ▷':'動きを止める Ⅱ';toggle.setAttribute('aria-pressed',String(paused));}
+  toggle.addEventListener('click',()=>oceanToggle?.click());
+  document.addEventListener('oceanframe',event=>{
+    const changed=paused!==event.detail.paused||toggle.hidden!==reduced.matches;
+    paused=event.detail.paused;
+    if(!paused)time=event.detail.time;
+    if(changed)syncButton();
+    if(!paused)queue();
   });
-  const fieldNumber = document.getElementById('field-number');
-  const fieldLabel = document.getElementById('field-label');
-  const fieldCaption = document.getElementById('field-caption');
-  const clamp = (v, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, v));
-  const mix = (a, b, t) => a + (b - a) * t;
-  const smooth = t => t * t * (3 - 2 * t);
-  function random(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t ^= t + Math.imul(t ^ t >>> 7, 61 | t); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-  const rand = random(2026);
-  const particles = Array.from({length: 112}, (_, i) => ({x: .1 + rand() * .8, y: .12 + rand() * .76, r: 1 + rand() * 2, bit: i % 2}));
-  const dimensions = new WeakMap();
-  function size(canvas, ctx) {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    const w = Math.round(rect.width), h = Math.round(rect.height);
-    const key = `${w},${h},${dpr}`;
-    if (dimensions.get(canvas) !== key) { canvas.width = w*dpr; canvas.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); dimensions.set(canvas,key); }
-    return {w,h};
-  }
-  function visible(el) { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }
-  function fieldDraw(progress, canvas = field, ctx = fieldContext, phase = 0) {
-    const {w,h} = size(canvas,ctx);
-    ctx.clearRect(0,0,w,h);
-    const a = Math.floor(progress), b = Math.min(2,a+1), t = smooth(progress-a);
-    const time = reduced.matches || motionPaused ? 0 : sceneTime;
-    const streamY = (x,row) => .27 + row*.15 + Math.sin(x*6.28+row*.9)*.055;
-    function keyPosition(i) {
-      if(i<60) {
-        const side = i/60*6, vertex = Math.floor(side), part = side-vertex;
-        const angle = vertex*Math.PI/3-Math.PI/2;
-        const radius = Math.min(w*.17,h*.22);
-        return {x:.32 + mix(Math.cos(angle),Math.cos(angle+Math.PI/3),part)*radius/w,
-                y:.46 + mix(Math.sin(angle),Math.sin(angle+Math.PI/3),part)*radius/h};
-      }
-      const joint = .32 + Math.sqrt(3)/2*Math.min(w*.17,h*.22)/w;
-      const path = [[joint,.44],[.83,.44],[.83,.61],[.76,.61],[.76,.52],[.69,.52],[.69,.62],[.62,.62],[.62,.49],[joint,.49]];
-      const value = (i-60)/51*(path.length-1), index = Math.min(path.length-2,Math.floor(value));
-      return {x:mix(path[index][0],path[index+1][0],value-index),y:mix(path[index][1],path[index+1][1],value-index)};
-    }
-    function position(p,i,scene) {
-      if(scene === 0) return {x:(p.x+Math.sin(time*.25+i*1.7)*.045)*w,y:(p.y+Math.sin(time*.19+i*.8)*.055)*h};
-      if(scene === 1) {const k=keyPosition(i);return {x:k.x*w,y:k.y*h};}
-      const row = Math.floor(i/28), col = i%28;
-      const drift = (col/28 + (phase*.3 + time*.045)*(row%2?-1:1) + 100) % 1;
-      const x=.12+drift*.76;
-      return {x:x*w, y:streamY(x,row)*h};
-    }
-    // A current replaces the old orbital rings and carries packets between endpoints.
-    for(let row=0;row<4;row++) {
-      ctx.strokeStyle=progress>1?'#8ccbeb50':'#8ccbeb14';ctx.lineWidth=1;
-      ctx.beginPath();
-      for(let i=0;i<=40;i++) {const x=.09+i*.82/40,y=streamY(x,row)*h;i?ctx.lineTo(x*w,y):ctx.moveTo(x*w,y);}
-      ctx.stroke();
-    }
-    if(progress>1) {
-      ctx.globalAlpha=progress-1;
-      ctx.fillStyle=colors[2];ctx.font='9px monospace';ctx.textAlign='left';ctx.fillText('ENDPOINT A',w*.07,h*.13);ctx.textAlign='right';ctx.fillText('ENDPOINT B',w*.93,h*.13);
-      for(const x of [.075,.925])for(let row=0;row<4;row++){
-        const y=streamY(x,row)*h;ctx.beginPath();
-        for(let j=0;j<6;j++){const angle=j*Math.PI/3;const px=x*w+Math.cos(angle)*6,py=y+Math.sin(angle)*6;j?ctx.lineTo(px,py):ctx.moveTo(px,py);}
-        ctx.closePath();ctx.strokeStyle='#8ccbeb99';ctx.stroke();
-      }
-      ctx.globalAlpha=1;
-    }
-    particles.forEach((p,i)=>{
-      const from=position(p,i,a),to=position(p,i,b),x=mix(from.x,to.x,t),y=mix(from.y,to.y,t);
-      ctx.fillStyle=colors[Math.round(progress)];ctx.globalAlpha=.45+(i%5)*.12;
-      ctx.beginPath();ctx.arc(x,y,progress<.65?p.r:1.8,0,Math.PI*2);ctx.fill();
-      if(i%19===0){ctx.globalAlpha=.12;ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.fill();}
-      if(progress<.65&&i%13===0){ctx.globalAlpha=.65;ctx.font='10px monospace';ctx.fillText(String(p.bit),x+8,y+3);}
-    });
-    ctx.globalAlpha=1;
-    if(progress>.55 && progress<1.5){ctx.fillStyle=colors[1];ctx.font='9px monospace';ctx.textAlign='center';ctx.fillText('A KEY TO THE INVISIBLE',w/2,h*.86);}
-  }
-  let queued=false;
-  function render(now) {
-    queued=false;if(document.hidden)return;
-    let progress=0;
-    if(!compact.matches && !reduced.matches){const centers=chapters.map(c=>{const r=c.getBoundingClientRect();return r.top+r.height/2-innerHeight/2;});if(centers[0]<0){if(centers[1]>=0)progress=clamp(-centers[0]/(centers[1]-centers[0]));else progress=1+clamp(-centers[1]/(centers[2]-centers[1]));}}
-    const current=Math.round(progress);
-    fieldNumber.textContent=`0${current+1}`;fieldLabel.textContent=labels[current];fieldCaption.textContent=captions[current];
-    document.querySelectorAll('.stage-progress i').forEach((el,i)=>el.classList.toggle('active',i===current));
-    if(visible(field))fieldDraw(progress, field, fieldContext, reduced.matches ? 0 : clamp(-chapters[2].getBoundingClientRect().top / innerHeight, -.5, 1));
-    if(compact.matches || reduced.matches) document.querySelectorAll('[data-static-scene]').forEach(canvas => { if(visible(canvas)) fieldDraw(Number(canvas.dataset.staticScene),canvas,canvas.getContext('2d')); });
-
-  }
-  function queue(){if(!queued&&!document.hidden){queued=true;requestAnimationFrame(render);}}
-  addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue);addEventListener('pageshow',queue);document.addEventListener('visibilitychange',()=>{queued=false;queue();});reduced.addEventListener('change',queue);compact.addEventListener('change',queue);
-  // Compact and reduced-motion views keep the explanations in the normal document flow.
-  function openHash(){const target=document.getElementById(location.hash.slice(1));if(!target)return;const detail=target.closest('details');if(detail)detail.open=true;if(target.id==='activity-history'){const next=target.querySelector('details');if(next?.tagName==='DETAILS')next.open=true;}}
-  addEventListener('hashchange',openHash);openHash();queue();
+  reduced.addEventListener('change',()=>{paused=reduced.matches||oceanToggle?.getAttribute('aria-pressed')==='true';syncButton();queue();});
+  const observer=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;if(inView){resize();queue();}},{rootMargin:'100px'});
+  observer.observe(journey);
+  new ResizeObserver(resize).observe(stage);
+  addEventListener('scroll',queue,{passive:true});
+  addEventListener('resize',()=>{resize();queue();});
+  document.addEventListener('visibilitychange',queue);
+  syncButton();resize();
 })();
