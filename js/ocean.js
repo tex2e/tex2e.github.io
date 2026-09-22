@@ -4,6 +4,8 @@
   const ctx = canvas?.getContext('2d', { alpha: false });
   if (!ctx) return;
   const hero = document.getElementById('top');
+  const art = hero.querySelector('.hero-art-space');
+  const depth = hero.querySelector('.ocean-depth');
   const toggle = document.getElementById('ocean-motion');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const TAU = Math.PI * 2;
@@ -27,8 +29,8 @@
     canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
     canvas.style.width = `${width}px`; canvas.style.height = `${height}px`;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    rings = width < 760 ? 36 : 52;
-    segments = width < 760 ? 112 : 168;
+    rings = width <= 760 ? 36 : 52;
+    segments = width <= 760 ? 112 : 168;
     mesh = new Float32Array((rings + 1) * (segments + 1) * 2);
     dirty = true;
   }
@@ -47,14 +49,58 @@
       cy + (y - x * .19 - Math.sin(u * 8 - time * .35 + theta * 2) * radius * .07) * scale];
   }
 
+  function drawAnnotations(cx, cy, mobile, strength, heroTop, artRect) {
+    // Keep the map labels in the same viewport space as the moving ocean core.
+    const top = Math.max(0, mobile ? artRect.top : heroTop);
+    const bottom = Math.min(height, mobile ? artRect.bottom : heroTop + heroHeight);
+    if (bottom <= top) return;
+    const labels = mobile ? [
+      ['ENTROPY', '乱数の源流', -.12, -.30, -1],
+      ['LATTICE', '耐量子暗号', .10, -.30, 1],
+      ['ZERO-KNOWLEDGE', '秘密を明かさず、証明する', -.12, .30, -1],
+      ['KEY EXCHANGE', '鍵を共有するしくみ', .10, .30, 1]
+    ] : [
+      ['ENTROPY', '乱数の源流', -.15, -.22, -1],
+      ['LATTICE', '耐量子暗号', .09, -.12, 1],
+      ['ZERO-KNOWLEDGE', '秘密を明かさず、証明する', -.20, .16, -1],
+      ['KEY EXCHANGE', '鍵を共有するしくみ', .09, .10, 1]
+    ];
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, top, width, bottom - top); ctx.clip();
+    ctx.globalAlpha = strength;
+    for (const [title, subtitle, dx, dy, side] of labels) {
+      const x = cx + (mobile ? artRect.width : width) * dx;
+      const y = cy + (mobile ? artRect.height : height) * dy;
+      const gold = title === 'LATTICE';
+      ctx.strokeStyle = gold ? '#e3ce9e70' : '#9cd5dc70';
+      ctx.lineWidth = .7;
+      ctx.beginPath(); ctx.moveTo(x - side * 5, y);
+      ctx.lineTo(x - side * (mobile ? 22 : 42), y + (cy - y) * .12);
+      ctx.stroke();
+      ctx.fillStyle = gold ? '#e3ce9e' : '#a0eddf';
+      ctx.beginPath(); ctx.arc(x, y, 2, 0, TAU); ctx.fill();
+      ctx.textAlign = side < 0 ? 'right' : 'left';
+      ctx.font = `${mobile ? 8 : 9}px ui-monospace, monospace`;
+      ctx.fillText(title, x + side * 10, y + 2);
+      ctx.fillStyle = '#91b8c3';
+      ctx.font = `${mobile ? 7 : 9}px sans-serif`;
+      ctx.fillText(subtitle, x + side * 10, y + (mobile ? 15 : 17));
+    }
+    ctx.restore();
+  }
+
   function draw() {
     const descent = Math.min(1, scrollY / Math.max(heroHeight, 1));
-    const strength = 1 - descent * .88;
-    const mobile = width < 760;
+    const mobile = width <= 760;
+    const strength = mobile ? 1 : 1 - descent * .88;
     const time = elapsed;
     const scale = mobile ? Math.max(width / 680, .6) : Math.max(width / 1500, .65);
-    const cx = width * (mobile ? .65 : .735) + pointer.x * 18;
-    const cy = height * (mobile ? .65 : .48) + pointer.y * 12 - descent * height * .18;
+    const artRect = mobile ? art.getBoundingClientRect() : null;
+    const cx = mobile ? artRect.left + artRect.width * .5 : width * .735 + pointer.x * 18;
+    const cy = mobile ? artRect.top + artRect.height * .5 : height * .48 + pointer.y * 12 - descent * height * .18;
+    const heroTop = hero.getBoundingClientRect().top;
+    depth.style.left = `${cx}px`;
+    depth.style.top = `${cy - heroTop}px`;
     ctx.fillStyle = '#020c18'; ctx.fillRect(0, 0, width, height);
     const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, width * .8);
     glow.addColorStop(0, '#020a16'); glow.addColorStop(.15, '#08283c');
@@ -119,7 +165,7 @@
         ctx.strokeStyle = i % 5 === 0 ? '#ffda92bb' : '#91ffefb0';
         ctx.lineWidth = .7 + u * 1.4; ctx.beginPath(); ctx.moveTo(...tail); ctx.lineTo(...p); ctx.stroke();
         ctx.fillStyle = i % 5 === 0 ? '#ffe4aa' : '#b5fff3';
-        ctx.fillRect(p[0], p[1], 1.2 + u, 1.2 + u);
+        ctx.beginPath(); ctx.arc(p[0], p[1], (.7 + u * .5), 0, TAU); ctx.fill();
       }
       ctx.globalCompositeOperation = 'source-over';
     }
@@ -134,6 +180,7 @@
     const shade = ctx.createLinearGradient(0, 0, width, 0);
     shade.addColorStop(0, '#020c18e8'); shade.addColorStop(mobile ? .35 : .32, '#020c18b0');
     shade.addColorStop(.68, '#020c1800'); ctx.fillStyle = shade; ctx.fillRect(0, 0, width, height);
+    drawAnnotations(cx, cy, mobile, strength, heroTop, artRect);
   }
 
   function updateButton() {

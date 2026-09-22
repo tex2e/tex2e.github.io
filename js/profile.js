@@ -33,6 +33,8 @@
   let w = 0, h = 0, viewH = 0, worldH = 0, dpr = 1, mobile = false;
   let paths = [], leaves = [], labels = [], queued = false, inView = false;
   let time = 0, paused = reduced.matches, lastScene = -1;
+  const hover = { x: 0, y: 0, active: false, leaveTime: -Infinity };
+  let tapStart = null, ripples = [];
   const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   let seed = 20260921;
   function random() { seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5; return (seed >>> 0) / 4294967296; }
@@ -99,21 +101,6 @@
         ink.strokeStyle = colors[p.scene] + '0c'; ink.lineWidth = 7; ink.stroke();
       }
     }
-    for (const leaf of leaves) {
-      const {x,y,scene} = leaf;
-      ink.strokeStyle = colors[scene] + '65'; ink.fillStyle = colors[scene] + '90';
-      if (scene === 0) {
-        ink.beginPath(); ink.arc(x,y, .7 + leaf.phase*1.8,0,Math.PI*2); ink.fill();
-        if (leaf.phase>.88) { ink.beginPath();ink.arc(x,y,5,0,Math.PI*2);ink.lineWidth=.5;ink.stroke(); }
-      } else if (scene === 1) {
-        const r=2+leaf.phase*3; ink.beginPath();ink.moveTo(x,y-r);ink.lineTo(x+r*.6,y);ink.lineTo(x,y+r);ink.lineTo(x-r*.6,y);ink.closePath();ink.lineWidth=.6;ink.stroke();
-      } else {
-        ink.fillRect(x-1,y-1,2,2);
-        if (leaf.phase>.75) {
-          ink.beginPath();ink.arc(x,y,4,0,Math.PI*2);ink.lineWidth=.6;ink.stroke();
-        }
-      }
-    }
     // Protocol branches acquire lateral links, turning a tree into a communicating network.
     const endpoints = leaves.filter(p=>p.scene===2);
     ink.strokeStyle = '#91cfff24'; ink.lineWidth = .6;
@@ -123,6 +110,9 @@
       ink.beginPath();ink.moveTo(a.x,a.y);ink.quadraticCurveTo((a.x+b.x)/2,(a.y+b.y)/2-25,b.x,b.y);ink.stroke();
     }
     const gradient=ink.createLinearGradient(0,0,0,worldH);
+    // Let the first trunk emerge from the heading before the earliest branch.
+    gradient.addColorStop(0,colors[0]+'00');
+    gradient.addColorStop(h*.25/worldH,colors[0]);
     colors.forEach((c,i)=>gradient.addColorStop((i+.5)/3,c));
     // An uninterrupted bundle: all six primary branches in every world attach to it.
     for (let strand=-3;strand<=3;strand++) {
@@ -156,6 +146,9 @@
       ink.fillStyle='#030f1bd9';ink.fillRect(x-5,label.y-11,tw+10,17);
       ink.fillStyle=colors[label.scene];ink.fillText(label.text,x,label.y);
     }
+    const entrance=ink.createLinearGradient(0,0,0,h*.28);
+    entrance.addColorStop(0,'#030f1b');entrance.addColorStop(1,'#030f1b00');
+    ink.fillStyle=entrance;ink.fillRect(0,0,w,h*.28);
     document.documentElement.classList.add('evolution-ready');
   }
   function resize() {
@@ -169,13 +162,57 @@
     atlas.width=canvas.width;atlas.height=Math.round(worldH*dpr);
     ctx.setTransform(dpr,0,0,dpr,0,0);build();queue();
   }
+  function cameraOffset() {
+    const rect=journey.getBoundingClientRect();
+    return clamp(-rect.top/Math.max(1,rect.height-viewH))*(worldH-viewH);
+  }
+  function drawLeaves(camera) {
+    const hoverPower=hover.active?1:clamp(1-(time-hover.leaveTime)/.5);
+    ripples=ripples.filter(ripple=>time-ripple.start<1.25);
+    for (const leaf of leaves) {
+      if(leaf.y<camera-12||leaf.y>camera+viewH+12)continue;
+      let alpha=mobile?clamp(((leaf.y%h)/h-.35)/.15):clamp((leaf.x/w-.18)/.34);
+      if(leaf.y<h*.28)alpha*=clamp(leaf.y/(h*.28));
+      if(alpha<=0)continue;
+      let dx=0,dy=0,force=0;
+      if(hoverPower>0) {
+        const distance=Math.hypot(leaf.x-hover.x,leaf.y-hover.y);
+        const nearby=hoverPower*clamp(1-distance/(mobile?105:150))**2;
+        dx+=Math.sin(time*7+leaf.phase*6.28)*nearby*8;
+        dy+=Math.cos(time*5+leaf.phase*6.28)*nearby*3;
+        force+=nearby;
+      }
+      for(const ripple of ripples) {
+        const age=time-ripple.start;
+        const distance=Math.hypot(leaf.x-ripple.x,leaf.y-ripple.y);
+        const wave=clamp(1-Math.abs(distance-age*180)/65)*(1-age/1.25);
+        dx+=Math.sin(time*9+leaf.phase*6.28)*wave*10;
+        dy+=Math.cos(time*7+leaf.phase*6.28)*wave*4;
+        force+=wave;
+      }
+      const x=leaf.x+dx,y=leaf.y-camera+dy,scene=leaf.scene;
+      ctx.globalAlpha=alpha;
+      ctx.strokeStyle=colors[scene]+'65';ctx.fillStyle=colors[scene]+'90';
+      ctx.lineWidth=.6;
+      if(scene===0) {
+        ctx.beginPath();ctx.arc(x,y,.7+leaf.phase*1.8,0,Math.PI*2);ctx.fill();
+        if(leaf.phase>.88||force>.35) {ctx.beginPath();ctx.arc(x,y,5+Math.min(force,1)*2,0,Math.PI*2);ctx.stroke();}
+      } else if(scene===1) {
+        const r=2+leaf.phase*3;
+        ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+r*.6,y);ctx.lineTo(x,y+r);ctx.lineTo(x-r*.6,y);ctx.closePath();ctx.stroke();
+      } else {
+        ctx.fillRect(x-1,y-1,2,2);
+        if(leaf.phase>.75||force>.35) {ctx.beginPath();ctx.arc(x,y,4+Math.min(force,1)*2,0,Math.PI*2);ctx.stroke();}
+      }
+    }
+    ctx.globalAlpha=1;
+  }
   function render() {
     queued=false;
     if(document.hidden||!inView||!w)return;
-    const rect=journey.getBoundingClientRect();
-    const progress=clamp(-rect.top/Math.max(1,rect.height-viewH));
-    const camera=progress*(worldH-viewH);
+    const camera=cameraOffset();
     ctx.drawImage(atlas,0,camera*dpr,atlas.width,viewH*dpr,0,0,w,viewH);
+    drawLeaves(camera);
     const scene=Math.min(2,Math.floor((camera+viewH*.5)/h));
     if(scene!==lastScene){
       document.getElementById('field-number').textContent=`0${scene+1}`;
@@ -187,7 +224,7 @@
     for(let i=0;i<28;i++) {
       const y=((i/28*worldH+time*37)%worldH);
       if(y<camera-20||y>camera+viewH+20)continue;
-      ctx.globalAlpha=mobile?clamp(((y%h)/h-.35)/.15):1;
+      ctx.globalAlpha=(mobile?clamp(((y%h)/h-.35)/.15):1)*clamp(y/(h*.25));
       const col=colors[Math.min(2,Math.floor(y/h))];
       ctx.strokeStyle=col;ctx.lineWidth=1.6;ctx.beginPath();
       for(let j=0;j<18;j++){const py=y-j;j?ctx.lineTo(trunk(py),py-camera):ctx.moveTo(trunk(py),py-camera);}ctx.stroke();
@@ -202,13 +239,42 @@
     ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
   }
   function queue(){if(!queued&&!document.hidden&&inView){queued=true;requestAnimationFrame(render);}}
+  function worldPoint(event) {
+    const rect=stage.getBoundingClientRect();
+    return {x:event.clientX-rect.left,y:event.clientY-rect.top+cameraOffset()};
+  }
+  stage.addEventListener('pointermove',event=>{
+    if(event.pointerType!=='mouse'||paused)return;
+    Object.assign(hover,worldPoint(event),{active:true});queue();
+  },{passive:true});
+  stage.addEventListener('pointerleave',()=>{
+    if(!hover.active)return;
+    hover.active=false;hover.leaveTime=time;queue();
+  });
+  stage.addEventListener('pointerdown',event=>{
+    if(event.pointerType==='mouse'||paused||event.target.closest('button,a'))return;
+    tapStart={id:event.pointerId,x:event.clientX,y:event.clientY};
+  },{passive:true});
+  stage.addEventListener('pointerup',event=>{
+    if(!tapStart||event.pointerId!==tapStart.id)return;
+    if(!paused&&Math.hypot(event.clientX-tapStart.x,event.clientY-tapStart.y)<12) {
+      ripples.push({...worldPoint(event),start:time});
+      if(ripples.length>3)ripples.shift();
+      queue();
+    }
+    tapStart=null;
+  },{passive:true});
+  stage.addEventListener('pointercancel',()=>{tapStart=null;});
   function syncButton(){toggle.hidden=reduced.matches;toggle.textContent=paused?'動きを再開する ▷':'動きを止める Ⅱ';toggle.setAttribute('aria-pressed',String(paused));}
   toggle.addEventListener('click',()=>oceanToggle?.click());
   document.addEventListener('oceanframe',event=>{
     const changed=paused!==event.detail.paused||toggle.hidden!==reduced.matches;
     paused=event.detail.paused;
     if(!paused)time=event.detail.time;
-    if(changed)syncButton();
+    if(changed){
+      syncButton();
+      if(paused){hover.active=false;hover.leaveTime=-Infinity;ripples=[];queue();}
+    }
     if(!paused)queue();
   });
   reduced.addEventListener('change',()=>{paused=reduced.matches||oceanToggle?.getAttribute('aria-pressed')==='true';syncButton();queue();});

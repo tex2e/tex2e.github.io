@@ -240,45 +240,30 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline-color: #9ae
 .hero .person-label { margin-top: 7px; }
 .hero .person-label strong { font-size: 13px; }
 .hero .person-label>span { font-size: 9px; margin-top: 4px; }
+.hero-art-space { display: none; }
 .ocean-cartography { position: absolute; inset: 0; pointer-events: none; color: #9cd5dc; font: 9px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .16em; }
 .ocean-coordinate { position: absolute; right: 6%; top: 120px; color: #779eaf; font-size: 8px; }
-.ocean-topic { position: absolute; padding-left: 16px; text-shadow: 0 1px 9px #020c18, 0 1px 9px #020c18; }
-.ocean-topic::before { content: ''; width: 4px; height: 4px; position: absolute; top: 6px; left: 0; background: #a0eddf; box-shadow: 0 0 12px #80fbe4; }
-.ocean-topic::after { content: ''; position: absolute; width: 46px; height: 22px; border-top: 1px solid #9cd5dc45; border-right: 1px solid #9cd5dc45; top: 13px; left: -56px; transform: skewY(25deg); }
-.ocean-topic i { display: block; font: normal 9px/1.8 -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: .08em; color: #7babb9; }
-.topic-entropy { left: 61%; top: 26%; }
-.topic-lattice { right: 5%; top: 36%; color: #e3ce9e; }
-.topic-lattice::before { background: #e3ce9e; }
-.topic-proof { left: 54%; top: 63%; }
-.topic-exchange { right: 5%; top: 57%; }
-.ocean-depth { position: absolute; left: 74%; top: 46%; font-size: 7px; text-align: center; color: #6b9cab; line-height: 2.8; }
+.ocean-depth { position: absolute; left: 73.5%; top: 48%; transform: translate(-50%, -1.4em); white-space: nowrap; font-size: 7px; text-align: center; color: #6b9cab; line-height: 2.8; }
 @media (min-width: 761px) and (max-width: 1100px) {
   .hero h1 { font-size: 48px; }
   .hero-people { width: 270px; gap: 18px; }
   .hero .portrait { width: 126px; }
-  .topic-proof { left: 58%; }
-  .ocean-topic { font-size: 8px; }
 }
 @media (max-width: 760px) {
-  .hero { min-height: 940px; height: 112svh; max-height: 1120px; padding: 132px 7% 0; }
+  .hero { min-height: 0; height: auto; max-height: none; padding: 132px 7% 0; }
   .hero h1 { font-size: clamp(34px, 8.4vw, 56px); line-height: 1.48; }
   .hero .eyebrow { font-size: 7px; letter-spacing: .09em; margin-bottom: 23px; }
   .hero-description { font-size: 12px; max-width: 320px; }
   .hero-description br { display: initial; }
   .hero-identity { font-size: 10px; margin-top: 16px; }
-  .hero-people { width: 218px; right: 7%; bottom: 118px; gap: 18px; }
+  .hero-art-space { display: block; height: clamp(280px, 80vw, 340px); margin-top: 36px; }
+  .hero-people { position: relative; width: 218px; right: auto; bottom: auto; gap: 18px; margin: 28px 0 118px auto; }
   .hero .portrait { width: 100px; }
   .hero .person-label strong { font-size: 11px; }
   .hero .person-label>span { font-size: 8px; }
   .hero .person-label small { font-size: 8px; }
   .ocean-coordinate { top: 89px; right: 7%; font-size: 6px; line-height: 1.6; }
-  .ocean-topic { font-size: 7px; }
-  .ocean-topic i { font-size: 8px; }
-  .topic-entropy { left: 13%; top: 52%; }
-  .topic-lattice { right: 7%; top: 58%; }
-  .topic-proof { left: 10%; top: 66%; }
-  .topic-exchange { display: none; }
-  .ocean-depth { left: 61%; top: 49%; font-size: 6px; }
+  .ocean-depth { left: 65%; top: 49%; font-size: 6px; }
 }
 
 /* Three biomes share one continuous, world-space trunk. */
@@ -292,7 +277,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline-color: #9ae
 .evolution-stage canvas { position: absolute; inset: 0; }
 .evolution-hud { position: absolute; left: 6%; right: 6%; top: 30px; display: flex; justify-content: space-between; color: var(--world-color); font-size: 8px; letter-spacing: .15em; border-top: 1px solid #9edbe327; padding-top: 17px; pointer-events: none; }
 .evolution-motion { position: absolute; right: 6%; bottom: 28px; z-index: 4; font-size: 9px; }
-.evolution-fallback { position: absolute; left: 65%; top: 0; bottom: 0; width: 2px; background: linear-gradient(#8df0cf, #f1cf8c, #91cfff); box-shadow: 0 0 45px 8px #91cfff25; }
+.evolution-fallback { position: absolute; left: 65%; top: 0; bottom: 0; width: 2px; background: linear-gradient(#8df0cf, #f1cf8c, #91cfff); box-shadow: 0 0 45px 8px #91cfff25; -webkit-mask-image: linear-gradient(transparent, #000 25%); mask-image: linear-gradient(transparent, #000 25%); }
 .evolution-ready .evolution-fallback { display: none; }
 .exploration-chapters { position: relative; grid-area: 1 / 1; min-width: 0; pointer-events: none; }
 .exploration .chapter { position: relative; min-height: max(100svh, 700px); width: 35%; margin: 0 0 0 6%; padding: 115px 0; border: 0; }
