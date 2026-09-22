@@ -1,7 +1,9 @@
 
-tex2e.github.io
-===============
+# tex2e.github.io
 
-Page of introduce myself
+まこ / てふ（@tex2e）のプロフィールサイトです。
+暗号技術・乱数・プロトコルを、実装と執筆の両面から探究しています。
+連載、RFC Trans、TLS 1.3の実装、創作的なコード作品を紹介します。
+トップページはCanvasによる「暗号の海」、技術のつながりを描く樹、終章の水平線で構成されています。
 
-View on GitHub.io :  [http://tex2e.github.io](http://tex2e.github.io)
+ローカルで確認するには、リポジトリ直下で `python3 -m http.server 8000` を実行し、`http://localhost:8000/` を開いてください。
