@@ -939,7 +939,7 @@ canvas {
 }
 summary {
   cursor:pointer;
-  font-size:14px;
+  font-size:15px;
   display:flex;
   justify-content:space-between;
   padding:24px 0;
@@ -956,7 +956,7 @@ details[open]>summary span {
 }
 .archive-content {
   padding:15px 0 40px;
-  font-size:12px;
+  font-size:13.5px;
   line-height:1.9;
   overflow-wrap:anywhere
 }
@@ -975,7 +975,7 @@ details[open]>summary span {
   border-bottom:1px solid #dce0d4
 }
 .archive-content td:first-child {
-  min-width:85px
+  min-width:96px
 }
 .archive-content .row>article {
   margin-bottom:40px
@@ -989,7 +989,7 @@ details[open]>summary span {
   margin:8px 0
 }
 .history-note {
-  font-size:10px;
+  font-size:11.5px;
   color:#737b6d;
   margin-top:20px
 }
@@ -1407,16 +1407,16 @@ nav a[href="#writing"] {
   margin:48px 0
 }
 .archive-content {
-  font-size:11px
+  font-size:12.5px
 }
 .archive-content td {
   padding:10px 4px
 }
 .archive-content td:first-child {
-  min-width:66px
+  min-width:72px
 }
 summary {
-  font-size:13px
+  font-size:14px
 }
 .contact-section {
   padding:var(--section-space-mobile) 8% 0
